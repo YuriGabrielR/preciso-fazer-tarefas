@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:ital,wght@1,200&family=Roboto:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: none;
+}
+
+body {
+  background-color: rgb(139, 139, 139);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 30px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px #000000;
+  height: 60px;
+}
+header #txt-header {
+  font-family: "Lobster", "cursive";
+  font-size: 1.5rem;
+  color: rgb(82, 82, 82);
+}
+header #txt-header i {
+  font-size: 1.2em;
+}
+
+main {
+  padding: 2em;
+  transition: 0.5s all;
+}
+main .todo--container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+main .todo--container .todo-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50px;
+  height: auto;
+  gap: 100px;
+}
+main .todo--container .todo-column .column--components {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  width: 370px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+main .todo--container .todo-column .column--components .btn-cardEditColumn,
+main .todo--container .todo-column .column--components .btn-cardDelColumn {
+  cursor: pointer;
+  font-size: 17px;
+}
+main .todo--container .todo-column .column--components .btn-cardEditColumn {
+  color: #172b4d;
+}
+main .todo--container .todo-column .column--components .btn-cardDelColumn {
+  color: #ff0000;
+}
+main .todo--container .todo-column .column--components .btn--column {
+  display: flex;
+  gap: 12px;
+  position: absolute;
+  padding-right: 8px;
+  right: 0;
+}
+main .todo--container .todo-column .column--components .column-title {
+  margin-top: 12px;
+  font-family: "Roboto", "sans-serif";
+  font-size: 17px;
+  text-align: center;
+  padding-top: 5px;
+  color: #172b4d;
+}
+main .todo--container .todo-column .column--components .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+  width: 320px;
+  box-shadow: 1px 1px 5px #000000;
+  height: auto;
+  font-family: "Raleway", "sans-serif";
+  font-size: 14px;
+  padding: 10px;
+  gap: 25px;
+  color: #172b4d;
+}
+main .todo--container .todo-column .column--components .card .card-icons {
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  border-top: 1px solid grey;
+  padding-top: 8px;
+}
+main .todo--container .todo-column .column--components .card .card-icons .btn-cardDone, main .todo--container .todo-column .column--components .card .card-icons .btn-cardEdit, main .todo--container .todo-column .column--components .card .card-icons .btn-cardDel {
+  cursor: pointer;
+  font-size: 17px;
+}
+main .todo--container .todo-column .todo-add {
+  display: flex;
+  align-items: center;
+}
+main .todo--container .todo-column .todo-add #input-add-todo {
+  border: none;
+  height: 22px;
+  text-align: center;
+  font-size: 18px;
+  width: 320px;
+}
+main .todo--container .todo-column .todo-add #input-add-todo:focus {
+  outline: none;
+}
+main .todo--container .todo-column .todo-add .btn--todoadd {
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #172b4d;
+}/*# sourceMappingURL=style.css.map */
