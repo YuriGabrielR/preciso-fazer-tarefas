@@ -6,7 +6,7 @@ const divColumn = document.querySelector('.todo-column');
 
 let arrColumns = [];
 
-$formColumn.addEventListener('submit', getInputColumn)
+$formColumn.addEventListener('submit', getInputColumn);
 
 function columnsAdd (){
     const ColumnsHTML = arrColumns.map((column)=>{
@@ -35,6 +35,7 @@ function columnsAdd (){
 
     
     divColumn.innerHTML = ColumnsHTML.join('');
+
     
     
 } 
@@ -43,13 +44,22 @@ function getInputColumn(e){
     e.preventDefault();
 
     const column = {
+      id: Math.floor(Math.random()* 999),  
       titleColumn: $valueInputColumn.value
-
     }
 
+    if(column.titleColumn == 0){
 
-    arrColumns.push(column);
-    columnsAdd()
+        window.alert('Campo vazio, por favor, informe um nome para sua nova lista!');
 
+    }else{
+        
+        arrColumns.push(column);
+        columnsAdd()
+    }
+
+    $valueInputColumn.value ="";
 }
 
+
+console.log(arrColumns);

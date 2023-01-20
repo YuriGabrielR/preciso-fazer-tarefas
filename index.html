@@ -12,47 +12,81 @@
     <header>
         
         <p id="txt-header">
-
             <i class="fa-solid fa-pen-to-square icon-header"></i>
-
-            To do List </p>
-
+            To do List
         </p>
 
 
-        <div class="bgColor-header">
+        <nav class="nav-header">
+            <ul>
+                <li>
+                    <a class="link-header" href="https://github.com/YuriGabrielR/to-do-list" target="_blank">
 
-            <input type="color"  id="input-colorTheme">
+                        <i class="fa-brands fa-github icon-nav"></i>
 
-        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="link-header" href="https://www.linkedin.com/in/yurigabrielramos/"
+                    target="_blank">
+
+                        <i class="fa-brands fa-linkedin icon-nav"></i>
+                     </a>
+            
+                </li>
 
 
-        <div>
-            <i class="fa-solid fa-filter"></i>
-            <select name="" id="">
-                <option value="all">Todos</option>
-                <option value="Done">Concluídos</option>
-                <option value="Pendentes">Pendentes</option>
-            </select>
-        </div>
+                <li>
+                    <a class="link-header" href="https://yurigabrielr.github.io/portfolio/" target="_blank">
 
+                        <i class="fa-solid fa-earth-americas icon-nav"></i>
+                    
+                    </a>
+                
+                
+                </li>
+            </ul>
+
+        </nav>
 
     </header>
 
     
     <main>
-        <div class="todo-newColumn">
+        <div class="todo-ColumnControls">
 
             <form class="todo-addcolumn">
                 <input type="text" id="input-column" autocomplete="off" placeholder="Adicione sua nova lista">
 
                 <button type="submit" id="btn-addcolumn">
 
-                <i class="fa-solid fa-circle-plus"></i>
+                <i class="fa-solid fa-circle-plus iconAddColumn"></i>
 
                 </button>
 
             </form>
+
+
+            <div class="bgColor">
+
+                <input type="color" value="#8B8B8B" id="input-colorTheme">
+    
+            </div>
+
+
+            <div class="filter-todo">
+                <i class="fa-solid fa-filter filterIcon"></i>
+                <select name="" id="filter">
+                    
+                    <option value="all">Todos</option>
+                    <option value="Done">Concluídos</option>
+                    <option value="Pendentes">Pendentes</option>
+                </select>
+    
+    
+            </div>
+    
 
         </div>
         

@@ -14,10 +14,15 @@ html {
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 li {
   padding: 0;
   margin: 0;
-  list-style: none;
   list-style: none;
 }
 
@@ -30,7 +35,9 @@ a:visited {
 }
 
 body {
-  background-color: rgb(139, 139, 139);
+  background-color: rgb(151, 144, 144);
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
@@ -38,6 +45,7 @@ header {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 5px 30px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px #000000;
@@ -45,23 +53,114 @@ header {
 }
 header #txt-header {
   font-family: "Lobster", "cursive";
-  font-size: 1.5rem;
-  color: rgb(82, 82, 82);
+  font-size: 1.8rem;
+  color: #172b4d;
 }
 header #txt-header i {
   font-size: 1.2em;
+}
+header .nav-header {
+  padding: 25px;
+}
+header .nav-header ul {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 18px;
+}
+header .nav-header .icon-nav {
+  font-size: 2em;
+  color: #172b4d;
 }
 
 main {
   padding: 2em;
   transition: 0.5s all;
 }
-main .todo--container {
+main .todo-ColumnControls {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 60px;
+}
+main .todo-ColumnControls .todo-addcolumn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+main .todo-ColumnControls .todo-addcolumn #input-column {
+  height: 30px;
+  width: 280px;
+  text-align: center;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #000000;
+  font-family: "Roboto", "sans-serif";
+  font-size: 1em;
+}
+main .todo-ColumnControls .todo-addcolumn #input-column:focus {
+  outline: none;
+}
+main .todo-ColumnControls .todo-addcolumn #btn-addcolumn {
+  background-color: transparent;
+  color: none;
+  border: none;
+  position: absolute;
+  padding-left: 10px;
+}
+main .todo-ColumnControls .todo-addcolumn .iconAddColumn {
+  font-size: 1.9em;
+  color: #172b4d;
+  cursor: pointer;
+}
+main .todo-ColumnControls #input-colorTheme {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  width: 30px;
+  height: 32px;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+main .todo-ColumnControls #input-colorTheme::-webkit-color-swatch {
+  border: 1px solid rgba(0, 0, 0, 0.144);
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2470588235);
+}
+main .todo-ColumnControls .filter-todo {
+  position: relative;
+  width: 140px;
+  height: 30px;
+}
+main .todo-ColumnControls .filter-todo .filterIcon {
+  position: absolute;
+  font-size: 1.3em;
+  color: #172b4d;
+  top: 20%;
+  left: 5px;
+}
+main .todo-ColumnControls .filter-todo #filter {
+  box-shadow: 1px 1px 4px #000000;
+  width: 160px;
+  height: 30px;
+  border-radius: 8px;
+  text-align: center;
+  border: none;
+  font-size: 1em;
+  font-family: "Roboto", "sans-serif";
+  color: #172b4d;
+}
+
+.todo--container {
   display: flex;
   flex-direction: row;
   gap: 50px;
 }
-main .todo--container .todo-column {
+.todo--container .todo-column {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,7 +168,7 @@ main .todo--container .todo-column {
   height: auto;
   gap: 100px;
 }
-main .todo--container .todo-column .column--components {
+.todo--container .todo-column .column--components {
   display: flex;
   flex-direction: column;
   background-color: aliceblue;
@@ -79,25 +178,25 @@ main .todo--container .todo-column .column--components {
   padding: 10px;
   position: relative;
 }
-main .todo--container .todo-column .column--components .btn-cardEditColumn,
-main .todo--container .todo-column .column--components .btn-cardDelColumn {
+.todo--container .todo-column .column--components .btn-cardEditColumn,
+.todo--container .todo-column .column--components .btn-cardDelColumn {
   cursor: pointer;
   font-size: 17px;
 }
-main .todo--container .todo-column .column--components .btn-cardEditColumn {
+.todo--container .todo-column .column--components .btn-cardEditColumn {
   color: #172b4d;
 }
-main .todo--container .todo-column .column--components .btn-cardDelColumn {
+.todo--container .todo-column .column--components .btn-cardDelColumn {
   color: #ff0000;
 }
-main .todo--container .todo-column .column--components .btn--column {
+.todo--container .todo-column .column--components .btn--column {
   display: flex;
   gap: 12px;
   position: absolute;
   padding-right: 8px;
   right: 0;
 }
-main .todo--container .todo-column .column--components .column-title {
+.todo--container .todo-column .column--components .column-title {
   margin-top: 12px;
   font-family: "Roboto", "sans-serif";
   font-size: 17px;
@@ -105,7 +204,7 @@ main .todo--container .todo-column .column--components .column-title {
   padding-top: 5px;
   color: #172b4d;
 }
-main .todo--container .todo-column .column--components .card {
+.todo--container .todo-column .column--components .card {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -119,7 +218,7 @@ main .todo--container .todo-column .column--components .card {
   gap: 25px;
   color: #172b4d;
 }
-main .todo--container .todo-column .column--components .card .card-icons {
+.todo--container .todo-column .column--components .card .card-icons {
   cursor: pointer;
   display: flex;
   gap: 20px;
@@ -127,25 +226,25 @@ main .todo--container .todo-column .column--components .card .card-icons {
   border-top: 1px solid grey;
   padding-top: 8px;
 }
-main .todo--container .todo-column .column--components .card .card-icons .btn-cardDone, main .todo--container .todo-column .column--components .card .card-icons .btn-cardEdit, main .todo--container .todo-column .column--components .card .card-icons .btn-cardDel {
+.todo--container .todo-column .column--components .card .card-icons .btn-cardDone, .todo--container .todo-column .column--components .card .card-icons .btn-cardEdit, .todo--container .todo-column .column--components .card .card-icons .btn-cardDel {
   cursor: pointer;
   font-size: 17px;
 }
-main .todo--container .todo-column .todo-add {
+.todo--container .todo-column .todo-add {
   display: flex;
   align-items: center;
 }
-main .todo--container .todo-column .todo-add #input-add-todo {
+.todo--container .todo-column .todo-add #input-add-todo {
   border: none;
   height: 22px;
   text-align: center;
   font-size: 18px;
   width: 320px;
 }
-main .todo--container .todo-column .todo-add #input-add-todo:focus {
+.todo--container .todo-column .todo-add #input-add-todo:focus {
   outline: none;
 }
-main .todo--container .todo-column .todo-add .btn--todoadd {
+.todo--container .todo-column .todo-add .btn--todoadd {
   border: none;
   font-size: 24px;
   cursor: pointer;
