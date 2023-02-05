@@ -96,16 +96,13 @@ function SaveEditModal(){
 
     })
 
-    console.log(idIndex);
     const IndexColumn =  arrColumns[idIndex];
 
     arrColumns[idIndex] = Editcolumn;
 
-    console.log(IndexColumn);
-
     columnsAdd()
     closeModal()
-    
+
 }
 
 btnDoneEditModal.addEventListener('click', SaveEditModal);
@@ -121,4 +118,4 @@ function closeModal(){
 btnCloseModal.addEventListener('click', closeModal);
 
 
-console.log(arrColumns);
+
