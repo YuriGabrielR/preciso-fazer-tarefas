@@ -1,15 +1,20 @@
 const $formColumn = document.querySelector('.todo-addcolumn');
 const $inputColumn = document.querySelector('#btn-addcolumn');
-const $valueInputColumn = document.querySelector('#input-column');
+const $valueInputColumn = document.querySelector('.input-column');
+const $idColumn = document.querySelector('#idColumn');
+const $inputEditModal = document.querySelector('#editColumn');
 const btnEditColumn = document.querySelector('.btn-cardEditColumn');
-const btnEditModal = document.querySelector('.closeModalEdit');
+const btnCloseModal = document.querySelector('.closeModalEdit');
+const btnDoneEditModal = document.querySelector('.doneModalEdit');
 const divColumn = document.querySelector('.todo-column');
 const divEditModal = document.querySelector('.modalEditColumn');
+
 
 
 let arrColumns = [];
 
 $formColumn.addEventListener('submit', getInputColumn);
+
 
 function columnsAdd (){
     const ColumnsHTML = arrColumns.map((column)=>{
@@ -31,15 +36,10 @@ function columnsAdd (){
             </div>
         `;               
 
-        
-        
-
     });
-
-    
+ 
     divColumn.innerHTML = ColumnsHTML.join('');
-    
-    
+
 } 
 
 function getInputColumn(e){
@@ -47,7 +47,7 @@ function getInputColumn(e){
 
     const column = {
       id: Math.floor(Math.random() * 999),  
-      titleColumn: $valueInputColumn.value
+      titleColumn: $valueInputColumn.value,
     }
 
     if(column.titleColumn == 0){
@@ -60,18 +60,65 @@ function getInputColumn(e){
         columnsAdd();
     }
 
-    $valueInputColumn.value ="";
-   
+    $valueInputColumn.value= "";
+    
 }
 
 function editColumn(id){
     divEditModal.classList.add('active');
+    
+    const idIndex = arrColumns.findIndex((column)=>{
+        return column.id == id;
+        
+    })
+
+    const indexColumn = arrColumns[idIndex];
+
+    $idColumn.value = indexColumn.id;
+    $inputEditModal.value = indexColumn.titleColumn;
+
+    
 }
+
+
+function SaveEditModal(){
+    
+    const Editcolumn =
+     {
+        id: $idColumn.value,
+        titleColumn: $inputEditModal.value
+
+     }
+  
+    
+     const idIndex = arrColumns.findIndex((column)=>{
+        return column.id == $idColumn.value;
+
+    })
+
+    console.log(idIndex);
+    const IndexColumn =  arrColumns[idIndex];
+
+    arrColumns[idIndex] = Editcolumn;
+
+    console.log(IndexColumn);
+
+    columnsAdd()
+    closeModal()
+    
+}
+
+btnDoneEditModal.addEventListener('click', SaveEditModal);
+
 
 function closeModal(){
+    $idColumn.value = "";
+    $inputEditModal.value = "";
     divEditModal.classList.remove('active');
+    
 }
 
-btnEditModal.addEventListener('click', closeModal);
+btnCloseModal.addEventListener('click', closeModal);
+
 
 console.log(arrColumns);
