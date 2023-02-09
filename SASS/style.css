@@ -318,43 +318,83 @@ main .todo-ColumnControls .filter-todo #filter {
   gap: 25px;
   color: #172b4d;
 }
-.todo--container .todo-column .column--components .card .card-icons {
-  cursor: pointer;
+.todo--container .todo-column .column--components .card .card-components {
   display: flex;
   gap: 8px;
-  justify-content: left;
+  justify-content: space-around;
+  align-items: center;
   border-top: 1px solid grey;
   padding-top: 8px;
-  padding-left: 10px;
 }
-.todo--container .todo-column .column--components .card .card-icons .btn-cardDone,
-.todo--container .todo-column .column--components .card .card-icons .btn-cardEdit,
-.todo--container .todo-column .column--components .card .card-icons .btn-cardDel {
+.todo--container .todo-column .column--components .card .card-components .buttonsCard {
+  display: flex;
+  gap: 12px;
+}
+.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardDone,
+.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardEdit,
+.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardDel {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.todo--container .todo-column .column--components .card .card-icons .btn-cardDone {
-  color: #1bbb35;
+.todo--container .todo-column .column--components .card .card-components .btn-cardDone {
+  color: #4dd823;
 }
-.todo--container .todo-column .column--components .card .card-icons .btn-cardEdit {
-  color: #797979;
+.todo--container .todo-column .column--components .card .card-components .btn-cardEdit {
+  color: #172b4d;
 }
-.todo--container .todo-column .column--components .card .card-icons .btn-cardDel {
+.todo--container .todo-column .column--components .card .card-components .btn-cardDel {
   color: #ff0000;
+}
+.todo--container .todo-column .column--components .card .card-components .box-statusCard {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.todo--container .todo-column .column--components .card .card-components .box-statusCard .cardPendency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px #000;
+  text-align: center;
+  border-radius: 8px;
+  height: 24px;
+  width: 100px;
+  background-color: #ffe02d;
+}
+.todo--container .todo-column .column--components .card .card-components .box-statusCard .cardConcluded {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px #000;
+  text-align: center;
+  border-radius: 8px;
+  height: 24px;
+  width: 100px;
+  background-color: #4dd823;
 }
 .todo--container .todo-column .todo-add {
   display: flex;
   align-items: center;
   margin-top: 20px;
 }
-.todo--container .todo-column .todo-add #input-add-todo {
+.todo--container .todo-column .todo-add #inputCard {
   border: none;
   height: 22px;
   text-align: center;
   font-size: 18px;
   width: 260px;
 }
-.todo--container .todo-column .todo-add #input-add-todo:focus {
+.todo--container .todo-column .todo-add #inputCard:focus {
   outline: none;
 }
 .todo--container .todo-column .todo-add .btn--todoadd {

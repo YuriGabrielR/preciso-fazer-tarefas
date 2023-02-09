@@ -10,37 +10,9 @@ const divColumn = document.querySelector('.todo-column');
 const divEditModal = document.querySelector('.modalEditColumn');
 
 
-
 let arrColumns = [];
 
 $formColumn.addEventListener('submit', getInputColumn);
-
-
-function columnsAdd (){
-    const ColumnsHTML = arrColumns.map((column)=>{
-
-        return `
-            <div class="column--components"> 
-                <div class="btn--column">
-                    <i class="fa-solid fa-pen   btn-cardEditColumn" onclick="editColumn(${column.id})"></i>
-                    <i class="fa-solid fa-trash btn-cardDelColumn"></i> 
-                </div>
-                    <h3 class="column-title">${column.titleColumn}</h3>
-                    <div class="todo-add">
-                    <button class="btn--todoadd">
-                        <i class="fa-solid fa-circle-plus"></i>
-                    </button>
-                    <input type="text" id="input-add-todo" 
-                    placeholder="Adicione uma nova tarefa"> 
-                    </div> 
-            </div>
-        `;               
-
-    });
- 
-    divColumn.innerHTML = ColumnsHTML.join('');
-
-} 
 
 function getInputColumn(e){
     e.preventDefault();
@@ -63,6 +35,40 @@ function getInputColumn(e){
     $valueInputColumn.value= "";
     
 }
+
+
+
+function columnsAdd (){
+    const ColumnsHTML = arrColumns.map((column)=>{
+
+        return `
+            <div class="column--components"> 
+                <div class="btn--column">
+                    <i class="fa-solid fa-pen   btn-cardEditColumn" onclick="editColumn(${column.id})"></i>
+                    <i class="fa-solid fa-trash btn-cardDelColumn"></i> 
+                </div>
+                    <h3 class="column-title">${column.titleColumn}</h3>
+                    <form id="formAddCard">
+                    <div class="todo-add">
+                    <button type="submit" class="btn--todoadd">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                    <input autocomplete="off"  type="text" id="input-add-todo" 
+                    placeholder="Adicione uma nova tarefa"> 
+                    </div> 
+                    </form>
+                    <div class="cardDiv"></div>
+                    
+                    
+            </div>
+        `;               
+
+    });
+ 
+    divColumn.innerHTML = ColumnsHTML.join('');
+
+} 
+
 
 function editColumn(id){
     divEditModal.classList.add('active');

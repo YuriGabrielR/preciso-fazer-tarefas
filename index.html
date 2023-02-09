@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <title> Farello - To do List </title>
     <link rel="stylesheet" href="./SASS/style.css">
 </head>
+
 <body>
-    
+
     <header>
-        
+
         <p id="txt-header">
             <i class="fa-solid fa-pen-to-square icon-header"></i>
             Farello - To do List
@@ -28,12 +30,11 @@
                 </li>
 
                 <li>
-                    <a class="link-header" href="https://www.linkedin.com/in/yurigabrielramos/"
-                    target="_blank">
+                    <a class="link-header" href="https://www.linkedin.com/in/yurigabrielramos/" target="_blank">
 
                         <i class="fa-brands fa-linkedin icon-nav"></i>
-                     </a>
-            
+                    </a>
+
                 </li>
 
 
@@ -41,10 +42,10 @@
                     <a class="link-header" href="https://yurigabrielr.github.io/portfolio/" target="_blank">
 
                         <i class="fa-solid fa-earth-americas icon-nav"></i>
-                    
+
                     </a>
-                
-                
+
+
                 </li>
             </ul>
 
@@ -52,7 +53,7 @@
 
     </header>
 
-    
+
     <main>
         <div class="todo-ColumnControls">
 
@@ -63,7 +64,7 @@
 
                 <button type="submit" id="btn-addcolumn">
 
-                <i class="fa-solid fa-circle-plus iconAddColumn"></i>
+                    <i class="fa-solid fa-circle-plus iconAddColumn"></i>
 
                 </button>
 
@@ -74,91 +75,108 @@
 
                 <i class="fa-solid fa-palette iconBgColor"></i>
                 <input type="color" value="#8B8B8B" id="input-colorTheme">
-                
-    
+
+
             </div>
 
 
             <div class="filter-todo">
                 <i class="fa-solid fa-filter filterIcon"></i>
                 <select name="" id="filter">
-                    
+
                     <option value="all">Todos</option>
                     <option value="Done">Concluídos</option>
                     <option value="Pendentes">Pendentes</option>
                 </select>
-    
+
             </div>
-    
+
         </div>
-        
+
         <div class="todo--container">
-    
+
             <div class="todo-column">
 
-                <!-- <div class="column--components"> 
+                <!-- <div class="column--components">
 
                     <div class="btn--column">
 
                         <i class="fa-solid fa-pen   btn-cardEditColumn"></i>
                         <i class="fa-solid fa-trash btn-cardDelColumn"></i>
-                        
+
                     </div>
-            
-                 <h3 class="column-title">Titulo da coluna</h3>
-            
-                
 
-                
-                    <div class="card">
+                    <h3 class="column-title">Titulo da coluna</h3>
 
-                        <h3>Criar um modal, com transição e estilos CSS</h3>
+                    <form id="formAddCard">
 
-                        <div class="card-icons">
+                        <div class="todo-add">
+                            <button class="btn--todoadd">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </button>
 
-                         <i class="fa-solid fa-check btn-cardDone"></i>
-                         <i class="fa-solid fa-pen   btn-cardEdit"></i>
-                         <i class="fa-solid fa-trash btn-cardDel"></i>
+                            <input autocomplete="off" type="text" id="inputCard"
+                                placeholder="Adicione uma nova tarefa">
 
                         </div>
 
-                    </div> 
+                    </form>
 
-                    
-                    
-                    <div class="todo-add">
-                        <button class="btn--todoadd">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-                        
-                        <input type="text" id="input-add-todo" 
-                        placeholder="Adicione uma nova tarefa"> 
-                        
-                    </div> 
-                
-                </div>
+                    <div class="cardDiv">
+                        <div class="card">
+
+                            <h3 class="titleCard"></h3>
+
+                            <div class="card-components">
+
+                                <div class="buttonsCard">
+                                    <i class="fa-solid fa-check btn-cardDone"></i>
+                                    <i class="fa-solid fa-pencil  btn-cardEdit"></i>
+                                    <i class="fa-solid fa-trash btn-cardDel"></i>
+
+                                </div>
+
+                                <div class="box-statusCard">
+
+                                    <span class="cardPendency">
+                                        <i class="fa-regular fa-clock"></i>
+                                        Pendente
+                                    </span>
+
+                                    <span class="cardConcluded"> Concluído </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
 
-            </div>  -->
+                    </div>
 
-            
-        
+
+                </div> -->
+
+            </div>
+
+
+
         </div>
-        
-        
-        
+
+
+
         <div class="modalEditColumn">
             <div class="modal">
 
-              <p id="titleModalEdit">Edite o nome da sua lista</p>
+                <p id="titleModalEdit">Edite o nome da sua lista</p>
 
-              <input type="text" id="editColumn">
+                <input type="text" id="editColumn">
 
-              <div class="buttonsEditModal">
-                <i class="fa-solid fa-square-check doneModalEdit"></i>
-                <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
-              </div>
-             
+                <div class="buttonsEditModal">
+                    <i class="fa-solid fa-square-check doneModalEdit"></i>
+                    <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
+                </div>
+
             </div>
         </div>
 
@@ -166,9 +184,11 @@
 
 
 
-                
-<script src="https://kit.fontawesome.com/f3b59ce49d.js" crossorigin="anonymous"></script>
-<script src="./column.js"></script>
-<script src="./themeBg.js"></script>
+
+    <script src="https://kit.fontawesome.com/f3b59ce49d.js" crossorigin="anonymous"></script>
+    <script src="./column.js"></script>
+    <script src="./cards.js"></script>
+    <script src="./themeBg.js"></script>
 </body>
+
 </html>
