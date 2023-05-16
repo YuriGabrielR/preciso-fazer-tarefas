@@ -191,6 +191,150 @@ main .todo-ColumnControls .filter-todo #filter {
   color: #172b4d;
 }
 
+.modalCard {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.1764705882);
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: 0.3s all;
+}
+.modalCard.active {
+  display: flex;
+}
+.modalCard .cardModal {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  width: 580px;
+  height: 210px;
+  background-color: #F0F8FF;
+}
+.modalCard .cardModal #btnCloseModal {
+  cursor: pointer;
+  position: absolute;
+  color: #172b4d;
+  font-size: 20px;
+  right: 12px;
+  top: 5px;
+}
+.modalCard .cardModal .ColumnCard {
+  font-family: "Montserrat", "sans-serif";
+  color: #172b4d;
+  font-size: 30px;
+  text-align: center;
+}
+.modalCard .cardModal #todo-card {
+  width: 570px;
+  height: 25px;
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 16px;
+  color: #13233F;
+  font-family: "Inter", "sans-serif";
+  outline: none;
+}
+.modalCard .cardModal .controll-status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+.modalCard .cardModal .controll-status .date-concluded {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalCard .cardModal .controll-status .date-concluded #date-label {
+  font-family: "Inter", "sans-serif";
+  font-size: 15px;
+  font-weight: 550;
+  color: #172b4d;
+}
+.modalCard .cardModal .controll-status .date-concluded #date-input {
+  width: 175px;
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalCard .cardModal .controll-status .area-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalCard .cardModal .controll-status .area-progress p {
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 15px;
+  font-weight: 550;
+  color: #172b4d;
+}
+.modalCard .cardModal .controll-status .area-progress #progressOptions {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  width: 175px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalCard .cardModal .controll-status .area-priority {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalCard .cardModal .controll-status .area-priority p {
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 15px;
+  font-weight: 550;
+  color: #172b4d;
+}
+.modalCard .cardModal .controll-status .area-priority #priorityCard {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  width: 175px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalCard .cardModal .area-modalBtnCard {
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+  margin-top: 1.25em;
+}
+.modalCard .cardModal .area-modalBtnCard .btn-modalCard {
+  text-align: center;
+  font-size: 16px;
+  font-family: "Inter", "sans-serif";
+  background-color: #172b4d;
+  color: #F0F8FF;
+  width: 150px;
+  height: 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modalCard .cardModal .area-modalBtnCard #editCard {
+  display: none;
+}
+
 .modalEditColumn {
   display: none;
   background-color: rgba(0, 0, 0, 0.1764705882);
@@ -303,103 +447,60 @@ main .todo-ColumnControls .filter-todo #filter {
   color: #172b4d;
 }
 .todo--container .todo-column .column--components .card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin-top: 20px;
   width: 260px;
-  box-shadow: 1px 1px 4px #000000;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2666666667);
   height: auto;
-  font-family: "Inter", "sans-serif";
+  font-family: "Montserrat", "sans-serif";
   font-weight: 400;
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
   padding: 10px;
   gap: 25px;
   color: #172b4d;
+  transition: 0.3s ease-in;
+}
+.todo--container .todo-column .column--components .card h3 {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Segoe UI", "sans-serif";
+}
+.todo--container .todo-column .column--components .card:hover {
+  box-shadow: 0px 1px 1px #000000;
 }
 .todo--container .todo-column .column--components .card .card-components {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 8px;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1px solid grey;
   padding-top: 8px;
+  padding-right: 5px;
 }
-.todo--container .todo-column .column--components .card .card-components .buttonsCard {
+.todo--container .todo-column .column--components .card .card-components .card-status {
   display: flex;
-  gap: 12px;
-}
-.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardDone,
-.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardEdit,
-.todo--container .todo-column .column--components .card .card-components .buttonsCard .btn-cardDel {
-  cursor: pointer;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.todo--container .todo-column .column--components .card .card-components .btn-cardDone {
-  color: #4dd823;
-}
-.todo--container .todo-column .column--components .card .card-components .btn-cardEdit {
-  color: #172b4d;
-}
-.todo--container .todo-column .column--components .card .card-components .btn-cardDel {
-  color: #ff0000;
-}
-.todo--container .todo-column .column--components .card .card-components .box-statusCard {
-  display: flex;
-  gap: 5px;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
 }
-.todo--container .todo-column .column--components .card .card-components .box-statusCard .cardPendency {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 3px #000;
-  text-align: center;
-  border-radius: 8px;
-  height: 24px;
-  width: 100px;
-  background-color: #ffe02d;
-}
-.todo--container .todo-column .column--components .card .card-components .box-statusCard .cardConcluded {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 3px #000;
-  text-align: center;
-  border-radius: 8px;
-  height: 24px;
-  width: 100px;
-  background-color: #4dd823;
-}
-.todo--container .todo-column .todo-add {
+.todo--container .todo-add {
   display: flex;
   align-items: center;
   margin-top: 20px;
 }
-.todo--container .todo-column .todo-add #inputCard {
+.todo--container .todo-add .btn--todoadd {
+  display: flex;
+  gap: 10px;
   border: none;
-  height: 22px;
-  text-align: center;
   font-size: 18px;
-  width: 260px;
-}
-.todo--container .todo-column .todo-add #inputCard:focus {
-  outline: none;
-}
-.todo--container .todo-column .todo-add .btn--todoadd {
-  border: none;
-  font-size: 24px;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
+  color: rgba(23, 43, 77, 0.7882352941);
+}
+.todo--container .todo-add .btn--todoadd:hover {
   color: #172b4d;
 }/*# sourceMappingURL=style.css.map */

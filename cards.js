@@ -1,70 +1,86 @@
-// const $formAddCard = document.querySelector('.formAddCard');
-// const btnAddCard = document.querySelector('.btn--todoadd');
-// const $inputCard = document.querySelector('#inputCard');
-// const cardDiv = document.querySelector('.cardDiv');
-// const fatherDiv = document.querySelector('.todo-column')
+// import {arrColumns} from "./column.js"
 
-// let arrCards = [];
+const $inputNameCard = document.querySelector('#todo-card');
+const $inputDateCard = document.querySelector('#date-input');
+const $inputProgressCard = document.querySelector('#progressOptions');
+const $inputPriorityCard = document.querySelector('#priorityCard'); 
+const btnDoneCard = document.querySelector('#addCard');
+const btnEditCard = document.querySelector('#editCard');
+const btnModalOpen = document.querySelector('.btn--todoadd');
+const btnModalClose = document.querySelector('#btnCloseModal');
+const modalCard = document.querySelector('.modalCard');
 
-// $formAddCard.addEventListener('submit', getInputCard);
 
-// function getInputCard(e){
-//     e.preventDefault();
 
-//     const Cards = {
-//         id: Math.floor(Math.random() * 9999),
-//         inputCard: $inputCard.value,
+// const ColumnsModule = arrColumns; 
+// console.log(ColumnsModule);
 
-//     }
+ const arrCards = []; 
 
-//     if( Cards.inputCard == 0){
-//         window.alert('Campo vazio, por favor, informe uma nova tarefa para sua lista!'); 
-//     }else{
+function openModal(e, id){
+    e.preventDefault(); 
+    modalCard.classList.add('active');
+}
 
-//         arrCards.push(Cards);
-//         CardsAdd();
+function closeModal(){
+    modalCard.classList.remove('active');
+}
 
-//     }
+
+function createCards(){
+
+
+const cards = {
+    id: Math.floor(Math.random() * 999),
+    titleCard: $inputNameCard.value,
+    date: $inputDateCard.value,
+    progress: $inputProgressCard.value,
+    priority: $inputPriorityCard.value
+}
    
+    if(cards.titleCard && cards.date){
 
-//     $inputCard.value = "";
-// }
+        arrCards.push(cards);
+        cardsAdd()
+        closeModal()
+
+    } else{
+
+        window.alert('Preencha todos os campos para adicionar uma tarefa.')
+    }
+
+}
 
 
-// function CardsAdd(){
-//    const CardsGenerate = arrCards.map((cards)=>{
+function cardsAdd(){
+    const divFatherCard = document.querySelector('.cardDiv');
+    const cardsHTML = arrCards.map((card)=>{
 
-//         return `
-//             <div class="card">
-//                 <h3 class="titleCard">${cards.inputCard}</h3>
-//                 <div class="card-components">
-                            
-//                     <div class="buttonsCard">
-//                         <i class="fa-solid fa-check btn-cardDone"></i>
-//                         <i class="fa-solid fa-pencil  btn-cardEdit"></i>
-//                         <i class="fa-solid fa-trash btn-cardDel"></i>
-//                     </div>
-
-//                         <div class="box-statusCard">
-//                             <span class="cardPendency">
-//                                 <i class="fa-regular fa-clock"></i>
-//                                 Pendente 
-//                             </span>
-                            
-//                             <span class="cardConcluded"> Concluído </span>
-
-//                         </div>
-
-//                 </div>
-
-//             </div> 
+    return `
+        <div class="card">
+        <input autocomplete="off"  type="hidden" id="idHidden" value="${card.id}">
+         <h3 class="titleCard">${card.titleCard}</h3>
+         <div class="card-components">
+             <div class="card-status">
+                <p>
+                 <i class="fa-solid fa-calendar-days"></i> 
+                ${card.date}
+                </p>
+                <p>
+                <i class="fa-solid fa-chart-bar"></i>
+                 ${card.progress}
+                </p>
+             </div>
+                <span>${card.priority}</span>
+            </div>
+            </div>
+        `;
         
-//         `;
+    })
 
-//     })
 
-//     const cardToString = CardsGenerate.join('');
-//     cardDiv.innerHTML= cardToString;  
-// }
+   
+    divFatherCard.innerHTML = cardsHTML.join('');
+}
 
-// console.log(arrCards);
+
