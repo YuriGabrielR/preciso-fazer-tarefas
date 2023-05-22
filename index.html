@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Preciso Fazer - ToDo </title>
+    <title> Preciso Fazer | Gerenciador de Tarefas  </title>
     <meta name="description" content="Gerencie suas tarefas em nossa plataforma! O melhor toDoList que você usará.">
-    
     <link rel="stylesheet" href="./SASS/style.css">
     <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 
         <p id="txt-header">
             <i class="fa-solid fa-pen-to-square icon-header"></i>
-            Farello - To do List
+            Preciso Fazer - ToDo List
         </p>
 
 
@@ -78,7 +78,7 @@
 
                 <i class="fa-solid fa-palette iconBgColor"></i>
                 <input type="color" value="#8B8B8B" id="input-colorTheme">
-                
+
 
             </div>
 
@@ -97,91 +97,45 @@
         </div>
 
         <div class="todo--container">
-
-            <div class="todo-column">
-
-                <!-- <div class="column--components">
-
-                    <div class="btn--column">
-
-                        <i class="fa-solid fa-pen btn-cardEditColumn"></i>
-                        <i class="fa-solid fa-trash btn-cardDelColumn"></i>
-
-                    </div>
-
-                    <h3 class="column-title">Titulo da coluna</h3>
-
-                    <form class="formAddCard">
-
-                        <div class="todo-add">
-                            <button class="btn--todoadd">
-                                <i class="fa-solid fa-circle-plus"></i>
-                                Adicione uma nova tarefa
-                            </button>
-
-
-                           
-                        </div>
-
-                    </form>
-
-                    <div class="cardDiv">
-                        <div class="card">
-
-                            <h3 class="titleCard">
-                                Implementar estilizações no header, respeitando
-                                semântica, paleta de cores e afins.
-                            </h3>
-
-                            <div class="card-components">
-
-                                
-                                <div class="card-status">
-                                    <p>
-                                        <i class="fa-solid fa-calendar-days"></i> 
-                                        08/03/2023
-                                    </p>
-
-                                    <p><i class="fa-solid fa-chart-bar"></i>
-                                        Em andamento </p>
-                                </div>
-
-                                <span> Baixa </span>
-
-
-                               
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div> -->
-
-            </div>
-
-
-
+            <div class="todo-column"></div>
         </div>
 
-        <div class="modalCard">
-            
-            <div class="cardModal">
-                <i class="fa-solid fa-xmark" id="btnCloseModal" ></i>
-                <h1 class="ColumnCard">Título da coluna</h1>
+        <div class="modalCard"></div>
 
-                <div class="area-todo">
+        <div class="modalEditColumn">
+            <div class="modal">
+
+                <p id="titleModalEdit">Edite o nome da sua lista</p>
+
+                <input autocomplete="off" type="text" id="editColumn">
+
+                <div class="buttonsEditModal">
+                    <i class="fa-solid fa-square-check doneModalEdit"></i>
+                    <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modalEditCard">
+            <div class="cardEdit">
+                <i class="fa-solid fa-xmark" id="closeEditCardModal" onclick="closeEditModal()"></i>
+                <h2 class="textCard">Edição</h2>
+
+                <div class="box-inputEditModal">
                     <form>
-                        <input placeholder="Insira um nome para a tarefa" type="text" id="todo-card" autocomplete="off">
+                        <label for="inputEditCard">Tarefa a fazer:</label>
+                        <input 
+                        placeholder="Reescreva sua tarefa" 
+                        type="text" 
+                        id="inputEditCard" 
+                        autocomplete="off">
                     </form>
                 </div>
 
-                <div class="controll-status">
+                <div class="inputs-controlls">
                     <div class="date-concluded">
-                        <span class="spanDate">
+                        <span>
                             <label id="date-label" for="date">Prazo para conclusão</label>
                         </span>
                         <input id="date-input" max="9999-12-31" type="date">
@@ -189,16 +143,16 @@
 
                     <div class="area-progress">
                         <span class="spanProgress">
-                           <p> Progresso </p>
+                            <p> Progresso </p>
                         </span>
-                        
+
                         <select name="progresso" id="progressOptions">
                             <option value="Não Iniciada"> Não Iniciada </option>
                             <option value="Em andamento"> Em andamento </option>
                             <option value="Concluída"> Concluída </option>
                         </select>
 
-                    </div> 
+                    </div>
 
 
                     <div class="area-priority">
@@ -214,38 +168,16 @@
                 </div>
 
                 <div class="area-modalBtnCard">
-                <button class="btn-modalCard" onclick="createCards()" id="addCard"> 
-                    Adicionar tarefa 
-                </button>
-
-                <button class="btn-modalCard" onclick="closeModal()" id="editCard">
-                    Salvar alterações
-                </button>
-                 </div>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="modalEditColumn">
-            <div class="modal">
-
-                <p id="titleModalEdit">Edite o nome da sua lista</p>
-
-                <input type="text" id="editColumn">
-                
-                <div class="buttonsEditModal">
-                    <i class="fa-solid fa-square-check doneModalEdit"></i>
-                    <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
+                    <button 
+                    class="btn-modalCard" 
+                    id="editCardModalBtn"
+                    onclick="saveEditModalCard()">
+                        Salvar alterações
+                    </button>
                 </div>
-
             </div>
+
         </div>
-
-
-
 
     </main>
 
@@ -254,7 +186,7 @@
 
     <script src="https://kit.fontawesome.com/f3b59ce49d.js" crossorigin="anonymous"></script>
     <script src="./column.js"></script>
-    <script src="./cards.js"></script>
+    <script defer src="./cards.js"></script>
     <script src="./themeBg.js"></script>
 </body>
 

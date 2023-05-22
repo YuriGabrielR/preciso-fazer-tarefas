@@ -217,10 +217,10 @@ main {
         height: 210px;
         background-color: #F0F8FF;
 
-        #btnCloseModal{
+        #btnCloseModal {
             cursor: pointer;
             position: absolute;
-            color:#172b4d;
+            color: #172b4d;
             font-size: 20px;
             right: 12px;
             top: 5px;
@@ -349,10 +349,6 @@ main {
                 cursor: pointer;
 
             }
-
-            #editCard {
-                display: none;
-            }
         }
 
 
@@ -368,7 +364,7 @@ main {
     width: 100vw;
     min-height: 100vh;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     z-index: 999;
     justify-content: center;
@@ -434,7 +430,215 @@ main {
 }
 
 
+.modalEditCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
+    display: none;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0000002a;
+
+    &.active {
+
+        display: flex;
+        align-items: center;
+        flex-direction: column; 
+
+       }
+
+
+
+    .cardEdit {
+        position: relative;
+        @include flexCenter(column);
+        justify-content: space-around;
+        padding: 10px;
+        height: 340px;
+        width: 320px;
+        border-radius: 10px;
+        background-color: white;
+
+       
+
+        .textCard {
+            color: #172b4d;
+            font-family: $txt-main;
+
+        }
+
+
+        #closeEditModal {
+            cursor: pointer;
+            color: #172b4d;
+            position: absolute;
+            font-size: 20px;
+            top: 5px;
+            right: 10px;
+        }
+
+
+        .box-inputEditModal {
+            @include flexCenter(column); 
+            
+            form {
+                @include flexCenter(column);
+                gap: 5px;
+                #inputEditCard {
+
+                    width: 15em;
+                    height: 25px;
+                    outline: none;
+                    font-family: $txt-main;
+                    padding-left: 8px;
+                    font-size: 18px;
+                    border: 1px solid #172b4d;
+                    border-radius: 5px;
+                    color: #172b4d;
+
+                }
+
+                label {
+                    font-family: $txt-main;
+                    font-size: 14px;
+                    text-align: left;
+                    color: #172b4dde;
+                    width: 100%;
+                 
+                 
+                    
+
+                }
+
+            }
+        }
+
+        .inputs-controlls {
+            @include flexCenter(column);
+            
+            gap: 10px;
+            width: 100%;
+            
+
+            .date-concluded {
+                @include flexCenter(column);
+                gap: 5px;
+
+                #date-input{
+                    width: 175px;
+                    height: 20px;
+                    padding: 2px;
+                    text-align: center;
+                    font-family: $txt-main;
+                    font-size: 14px;
+                    color: #172b4d;
+                    border: 1px solid #808080;
+                    border-radius: 6px;
+                 }
+
+
+                span{
+
+                    label {
+
+                     font-family: $txt-main;
+                     font-size: 14px;
+                     text-align: left;
+                     color: #172b4dde;
+                     width: 100%;
+                        
+
+                     
+                    }
+                }
+            }
+
+            .area-progress {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                p {
+                    text-align: center;
+                    font-family: $txt-main;
+                    font-size: 15px;
+                    font-weight: 550;
+                    color: #172b4d;
+                }
+
+                #progressOptions {
+                    font-family: $txt-main;
+                    font-size: 14px;
+                    text-align: center;
+                    width: 175px;
+                    color: #172b4d;
+                    border: 1px solid #808080;
+                    border-radius: 6px;
+                }
+            }
+
+            .area-priority {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                p {
+                    text-align: center;
+                    font-family: $txt-main;
+                    font-size: 15px;
+                    font-weight: 550;
+                    color: #172b4d;
+
+                }
+
+                #priorityCard {
+                    font-family: $txt-main;
+                    font-size: 14px;
+                    text-align: center;
+                    width: 175px;
+                    color: #172b4d;
+                    border: 1px solid #808080;
+                    border-radius: 6px;
+                }
+            }
+        }
+
+
+        .area-modalBtnCard {
+            display: flex;
+            gap: 10px;
+            justify-content: right;
+            margin-top: 1.25em;
+
+
+            .btn-modalCard {
+                text-align: center;
+                font-size: 16px;
+                font-family: $txt-main;
+                background-color: #172b4d;
+                color: #F0F8FF;
+                width: 150px;
+                height: 28px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+
+            }
+
+        }
+
+
+
+            
+        
+    }
+
+
+}
 
 
 .todo--container {
@@ -457,7 +661,7 @@ main {
         .column--components {
             @include flexCenter(column);
             align-items: center;
-            background-color: aliceblue;
+            background-color: #E9EBEE;
             width: 300px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -509,7 +713,7 @@ main {
                     font-weight: 400;
                     font-family: $txt-card;
                 }
-                
+                background-color: #FFFFFF;
                 cursor: pointer;
                 display: flex;
                 flex-direction: column;
@@ -527,11 +731,12 @@ main {
                 color: #172b4d;
                 transition: 0.3s ease-in;
 
-                &:hover{
+                &:hover {
                     box-shadow: 0px 1px 1px #000000;
 
 
                 }
+
                 .card-components {
                     display: flex;
                     flex-direction: row;
@@ -542,7 +747,7 @@ main {
                     padding-right: 5px;
 
 
-                    .card-status{
+                    .card-status {
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
@@ -592,6 +797,3 @@ main {
 
     }
 }
-
-
-

@@ -1,28 +1,26 @@
-const $formColumn = document.querySelector('.todo-addcolumn');
-const $inputColumn = document.querySelector('#btn-addcolumn');
-const $idHiddenColumn = document.querySelector('#idHidden');
-const $valueInputColumn = document.querySelector('.input-column');
-const $idColumn = document.querySelector('#idColumn');
-const $inputEditModal = document.querySelector('#editColumn');
-const btnEditColumn = document.querySelector('.btn-cardEditColumn');
-const btnCloseModal = document.querySelector('.closeModalEdit');
-const btnDoneEditModal = document.querySelector('.doneModalEdit');
+const formColumn = document.querySelector('.todo-addcolumn');
+const formColumnInput = document.querySelector('.input-column');
+const formColumnId = document.querySelector('#idColumn');
+const formColumnEdit = document.querySelector('#editColumn');
+const columnEditBtnOpen = document.querySelector('.btn-cardEditColumn');
+const columnEditBtnClose = document.querySelector('.closeModalEdit');
+const columnEditBtnSave = document.querySelector('.doneModalEdit');
 const divColumn = document.querySelector('.todo-column');
 const divEditModal = document.querySelector('.modalEditColumn');
-
 
 
 let  dataColumns = JSON.parse(localStorage.getItem('db_Columns')) ?? []; 
 let setLocalStorage = ()=> { localStorage.setItem('db_Columns', JSON.stringify(dataColumns));}
 
 
+
 (function loadContents(){
     columnsAdd(); 
-
 })(); 
 
 
-$formColumn.addEventListener('submit', getInputColumn);
+
+formColumn.addEventListener('submit', getInputColumn);
 
 function getInputColumn(e){
     e.preventDefault();
@@ -30,7 +28,7 @@ function getInputColumn(e){
     const column = {
 
       id: Math.floor(Math.random() * 999),  
-      titleColumn: $valueInputColumn.value,
+      titleColumn: formColumnInput.value,
 
     }
 
@@ -47,18 +45,19 @@ function getInputColumn(e){
        
     }
 
-    $valueInputColumn.value= "";
+    formColumnInput.value= "";
 }
 
-
+function clearHtmlColumns(){
+    document.querySelector('.todo-column').innerHTML='';
+}
 
 function columnsAdd (){
+   clearHtmlColumns(); 
 
-    const ColumnsHTML = dataColumns.map( (column) => {
-        
-       
-        return `
-            <div class="column--components"> 
+     dataColumns.forEach( (column, index) => {
+        const ColumnsHTML = `
+            <div class="column--components" data-index="${index}" > 
                 <input autocomplete="off"  type="hidden" id="idHidden" 
                 value="${column.id}">
                 <div class="btn--column">
@@ -66,9 +65,9 @@ function columnsAdd (){
                     <i class="fa-solid fa-trash btn-cardDelColumn" onclick="delColumn(${column.id}, event)" data-target="${column.id}"></i> 
                 </div>
                     <h3 class="column-title">${column.titleColumn}</h3>
-                    <form class="formAddCard">
+                    <form class="formAddCard" data-idColumn= '${column.id}'>
                     <div class="todo-add">
-                    <button class="btn--todoadd" type="submit" onclick="openModal(event)">
+                    <button class="btn--todoadd" type="submit" onclick="openInputCardModal(event, '${column.titleColumn}', ${column.id})">
                         <i class="fa-solid fa-circle-plus"></i>
                         Adicione uma nova tarefa
                     </button>
@@ -78,12 +77,14 @@ function columnsAdd (){
                     <div data-id="${column.id}" class="cardDiv"></div>
             </div>
 
-        `;               
+        `;            
+        
+        
+        divColumn.innerHTML += ColumnsHTML;
 
     });
 
-    
-    divColumn.innerHTML = ColumnsHTML.join('');
+   
 
 } 
 
@@ -94,6 +95,7 @@ function delColumn (id, e){
     let elementNode = e.target.parentNode.parentNode;
     let targetBtnAttribute = e.target.getAttribute('data-target');
 
+
     if(id == targetBtnAttribute){
         let index = dataColumns.findIndex((column)=>{
             return column.id == id;
@@ -101,6 +103,7 @@ function delColumn (id, e){
 
         dataColumns.splice(index, 1);
         setLocalStorage();
+        
         elementNode.remove();
 
     }
@@ -110,8 +113,11 @@ function delColumn (id, e){
 
 
 function editColumn(id){
+
     divEditModal.classList.add('active');
     
+
+
     const idIndex = dataColumns.findIndex((column)=>{
         return column.id == id;
         
@@ -119,9 +125,9 @@ function editColumn(id){
 
     const indexColumn = dataColumns[idIndex];
     
-
-    $idColumn.value = indexColumn.id;
-    $inputEditModal.value = indexColumn.titleColumn;
+    
+    formColumnId.value = indexColumn.id;
+    formColumnEdit.value = indexColumn.titleColumn;
     
   
 }
@@ -129,40 +135,38 @@ function editColumn(id){
 
 function SaveEditModal(){
     
-    const editColumn =
-     {
-        id: $idColumn.value,
-        titleColumn: $inputEditModal.value
+        const editColumn =
+        {
+            id: formColumnId.value,
+            titleColumn: formColumnEdit.value
 
-     }
+        }
   
-    
-     const idIndex = dataColumns.findIndex((column)=>{
-        return column.id == $idColumn.value;
 
-    })
+     const idIndex = dataColumns.findIndex((column)=>{
+        return column.id == formColumnId.value;
+
+     })
 
    
 
-    dataColumns[idIndex] = editColumn;
+     dataColumns[idIndex] = editColumn;
     
     
-    columnsAdd();
-    setLocalStorage();
-    divEditModal.classList.remove('active')
+        columnsAdd();
+        setLocalStorage();
+        divEditModal.classList.remove('active')
 }
 
-btnDoneEditModal.addEventListener('click', SaveEditModal);
+columnEditBtnSave.addEventListener('click', SaveEditModal);
 
 
 function closeModal(){
     divEditModal.classList.remove('active');
-    $idColumn.value = "";
-    $inputEditModal.value = "";
-    
-    
+
+
 }
 
-btnCloseModal.addEventListener('click', closeModal);
+columnEditBtnClose.addEventListener('click', closeModal);
 
 

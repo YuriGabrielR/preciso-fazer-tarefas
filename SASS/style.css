@@ -331,9 +331,6 @@ main .todo-ColumnControls .filter-todo #filter {
   border-radius: 10px;
   cursor: pointer;
 }
-.modalCard .cardModal .area-modalBtnCard #editCard {
-  display: none;
-}
 
 .modalEditColumn {
   display: none;
@@ -341,7 +338,7 @@ main .todo-ColumnControls .filter-todo #filter {
   width: 100vw;
   min-height: 100vh;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   z-index: 999;
   justify-content: center;
@@ -394,6 +391,168 @@ main .todo-ColumnControls .filter-todo #filter {
   align-self: flex-start;
 }
 
+.modalEditCard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.1647058824);
+}
+.modalEditCard.active {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modalEditCard .cardEdit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  height: 340px;
+  width: 320px;
+  border-radius: 10px;
+  background-color: white;
+}
+.modalEditCard .cardEdit .textCard {
+  color: #172b4d;
+  font-family: "Inter", "sans-serif";
+}
+.modalEditCard .cardEdit #closeEditModal {
+  cursor: pointer;
+  color: #172b4d;
+  position: absolute;
+  font-size: 20px;
+  top: 5px;
+  right: 10px;
+}
+.modalEditCard .cardEdit .box-inputEditModal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modalEditCard .cardEdit .box-inputEditModal form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalEditCard .cardEdit .box-inputEditModal form #inputEditCard {
+  width: 15em;
+  height: 25px;
+  outline: none;
+  font-family: "Inter", "sans-serif";
+  padding-left: 8px;
+  font-size: 18px;
+  border: 1px solid #172b4d;
+  border-radius: 5px;
+  color: #172b4d;
+}
+.modalEditCard .cardEdit .box-inputEditModal form label {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: left;
+  color: rgba(23, 43, 77, 0.8705882353);
+  width: 100%;
+}
+.modalEditCard .cardEdit .inputs-controlls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.modalEditCard .cardEdit .inputs-controlls .date-concluded {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalEditCard .cardEdit .inputs-controlls .date-concluded #date-input {
+  width: 175px;
+  height: 20px;
+  padding: 2px;
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalEditCard .cardEdit .inputs-controlls .date-concluded span label {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: left;
+  color: rgba(23, 43, 77, 0.8705882353);
+  width: 100%;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-progress p {
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 15px;
+  font-weight: 550;
+  color: #172b4d;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-progress #progressOptions {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  width: 175px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-priority {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-priority p {
+  text-align: center;
+  font-family: "Inter", "sans-serif";
+  font-size: 15px;
+  font-weight: 550;
+  color: #172b4d;
+}
+.modalEditCard .cardEdit .inputs-controlls .area-priority #priorityCard {
+  font-family: "Inter", "sans-serif";
+  font-size: 14px;
+  text-align: center;
+  width: 175px;
+  color: #172b4d;
+  border: 1px solid #808080;
+  border-radius: 6px;
+}
+.modalEditCard .cardEdit .area-modalBtnCard {
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+  margin-top: 1.25em;
+}
+.modalEditCard .cardEdit .area-modalBtnCard .btn-modalCard {
+  text-align: center;
+  font-size: 16px;
+  font-family: "Inter", "sans-serif";
+  background-color: #172b4d;
+  color: #F0F8FF;
+  width: 150px;
+  height: 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .todo--container {
   display: flex;
   flex-direction: row;
@@ -412,7 +571,7 @@ main .todo-ColumnControls .filter-todo #filter {
   align-items: center;
   flex-direction: column;
   align-items: center;
-  background-color: aliceblue;
+  background-color: #E9EBEE;
   width: 300px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -447,6 +606,7 @@ main .todo-ColumnControls .filter-todo #filter {
   color: #172b4d;
 }
 .todo--container .todo-column .column--components .card {
+  background-color: #FFFFFF;
   cursor: pointer;
   display: flex;
   flex-direction: column;

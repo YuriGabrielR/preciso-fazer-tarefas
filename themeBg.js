@@ -7,21 +7,20 @@ function setThemeLocalStorage(color){
     
     document.body.style.backgroundColor = getColorLocalStorage;
     inputColorBg.value = getColorLocalStorage;
-    console.log(getColorLocalStorage); 
+  };
   
-  }
-  
-  (function themeSelectLoad(){
-  
-      setThemeLocalStorage();
-  
-  })(); 
 
-  
 inputColorBg.addEventListener('input', (e)=>{
     let valueColor = inputColorBg.value; 
     let colorStorage = localStorage.setItem('colorTheme', valueColor);
    
     setThemeLocalStorage(colorStorage); 
-} )
+} );
 
+
+
+(function themeSelectLoad(){
+  
+    setThemeLocalStorage();
+
+})();
