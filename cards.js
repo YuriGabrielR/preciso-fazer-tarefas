@@ -149,7 +149,7 @@ function cardsAdd() {
         let cardHTML =
 
         `
-            <div class="card">
+            <div class="card" data-target ="${card.id}">
 
                 <input autocomplete="off"  type="hidden" id="idHidden" value="${card.id}">
 
@@ -166,7 +166,8 @@ function cardsAdd() {
                     <li onclick="editModal(${card.id})"> 
                     <i class="fa-solid fa-pencil"></i>
                     Editar </li>
-                    <li> 
+
+                    <li onclick="deleteCard(${card.id}, event)"> 
                     Excluir 
                     <i class="fa-solid fa-trash-can"></i>
                     </li> 
@@ -203,6 +204,31 @@ function openModalOptionsCard(event) {
     divButtons.classList.toggle('active');
 }
 
+
+function deleteCard(id, e){
+    
+    let elementForRemove = e.target.parentNode.parentNode; 
+    let targetId = elementForRemove.attributes[1].value;
+
+    console.log(elementForRemove);
+    console.log(targetId);
+  
+    if ( id == targetId){
+
+        let index = dataArrCards.findIndex(card =>{
+
+            return card.id == id; 
+
+        })
+
+        dataArrCards.splice(index, 1); 
+        setLocalStorageCards();
+        elementForRemove.remove();
+
+    }
+    
+
+}
 
 function editModal(id) {
     ModalForEditCard.classList.add('active');
