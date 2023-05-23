@@ -1,18 +1,19 @@
 
-const ModalForEditCard = document.querySelector('.modalEditCard')
-const inputEdit = document.querySelector('#inputEditCard');
-const dateModalInput = document.querySelector('#date-input');
-const progressStatus = document.querySelector('#progressOptions');
-const priorityCard = document.querySelector('#priorityCard');
- 
+let ModalForEditCard = document.querySelector('.modalEditCard')
+let inputEdit = document.querySelector('#inputEditCard');
+let dateModalInput = document.querySelector('#date-input');
+let progressStatus = document.querySelector('#progressOptions');
+let priorityCard = document.querySelector('#priorityCard');
+let InputHiddenColumn = document.querySelector('#idColumnHidden');
+let inputIdCard = document.querySelector('#idHidden');
 
 
 const dataArrCards = JSON.parse(localStorage.getItem('db_Cards')) ?? [];
 
-let setLocalStorageCards = ()=> { localStorage.setItem('db_Cards', JSON.stringify(dataArrCards));};
+let setLocalStorageCards = () => { localStorage.setItem('db_Cards', JSON.stringify(dataArrCards)); };
 
 
-(function loadCards (){
+(function loadCards() {
 
     cardsAdd();
 })();
@@ -20,7 +21,7 @@ let setLocalStorageCards = ()=> { localStorage.setItem('db_Cards', JSON.stringif
 function openInputCardModal(e, columnTitle, idColumn) {
     e.preventDefault();
 
-    let divInsertForModal = document.querySelector('.modalCard'); 
+    let divInsertForModal = document.querySelector('.modalCard');
     let ColumnId = idColumn;
     const modalHTML =
         `
@@ -90,11 +91,12 @@ function closeModal() {
 
 
 function createCards(idColumn) {
-    const inputNameCard = document.querySelector('#todo-card');
-    const inputDateCard = document.querySelector('#date-input');
-    const inputProgressCard = document.querySelector('#progressOptions');
-    const inputPriorityCard = document.querySelector('#priorityCard');
-  
+
+    let inputNameCard = document.querySelector('#todo-card');
+    let inputDateCard = document.querySelector('#date-input');
+    let inputProgressCard = document.querySelector('#progressOptions');
+    let inputPriorityCard = document.querySelector('#priorityCard');
+
 
     const cards = {
         idColumn: idColumn,
@@ -122,34 +124,57 @@ function createCards(idColumn) {
     inputProgressCard.value = ''
     inputPriorityCard.value = ''
 
-
     closeModal()
 }
 
-function clearHtml(){
+
+function cleatHtmlColumns() {
     let divs = document.querySelectorAll('[data-id]');
-    
-    divs.forEach(div =>{
-       div.innerHTML ='';
+
+    divs.forEach(div => {
+        div.innerHTML = '';
     })
 }
 
 function cardsAdd() {
 
-    clearHtml(); 
+    cleatHtmlColumns();
 
-     dataArrCards.forEach((card) => {
+    dataArrCards.forEach((card) => {
 
         let divForInsertCards = document.querySelector
-        (`[data-id ="${card.idColumn}"]`);
+            (`[data-id ="${card.idColumn}"]`);
 
 
-        let cardHTML = `
-        <div class="card" 
-        ondblclick= "editModal(${card.id})">
-        <input autocomplete="off"  type="hidden" id="idHiddden" value="${card.id}">
-         <h3 class="titleCard">${card.titleCard}</h3>
-         <div class="card-components">
+        let cardHTML =
+
+        `
+            <div class="card">
+
+                <input autocomplete="off"  type="hidden" id="idHidden" value="${card.id}">
+
+                <div class="card-header">
+
+                 <h3 class="titleCard">${card.titleCard}</h3>
+
+                 <p onclick="openModalOptionsCard(event)"> ... </p> 
+
+                </div>
+            
+                <ul class="box-OptionsCard">
+
+                    <li onclick="editModal(${card.id})"> 
+                    <i class="fa-solid fa-pencil"></i>
+                    Editar </li>
+                    <li> 
+                    Excluir 
+                    <i class="fa-solid fa-trash-can"></i>
+                    </li> 
+
+                </ul>
+           
+         
+             <div class="card-components">
              <div class="card-status">
                 <p>
                  <i class="fa-solid fa-calendar-days"></i> 
@@ -163,28 +188,33 @@ function cardsAdd() {
                 <span>${card.priority}</span>
             </div>
             </div>
+
         `;
 
         divForInsertCards.innerHTML += cardHTML;
-       
+
     })
 
-    
 
 }
 
+function openModalOptionsCard(event) {
+    let divButtons = event.target.parentElement.offsetParent.children[2]; 
+    divButtons.classList.toggle('active');
+}
 
 
 function editModal(id) {
-    ModalForEditCard.classList.add('active'); 
+    ModalForEditCard.classList.add('active');
 
 
-    const indexCard = dataArrCards.findIndex((card)=>{
-        return card.id == id; 
+    const indexCard = dataArrCards.findIndex((card) => {
+        return card.id == id;
 
     })
 
-    const card = dataArrCards[indexCard]; 
+    const card = dataArrCards[indexCard];
+
 
     inputEdit.value = card.titleCard;
     dateModalInput.value = card.date;
@@ -194,43 +224,12 @@ function editModal(id) {
 }
 
 
-function saveEditModalCard() {
-
-    let inputIdCard = document.querySelector('#idHiddden');
-
-    const newCardEdit = {
-        id: inputIdCard.value,
-        titleCard: inputEdit.value,
-        date: dateModalInput.value,
-        progress: progressStatus.value,
-        priority: priorityCard.value
-    }
-
-    const indexCard = dataArrCards.findIndex((card) => {
-        return card.id == inputIdCard.value;
-    })
-
-    console.log(indexCard);
-
-    dataArrCards[indexCard] = newCardEdit;
-
-    cardsAdd();
-    setLocalStorageCards();
-
-    inputEdit.value = '';
-    dateModalInput.value ='';
-    progressStatus.value ='';
-    priorityCard.value ='';
-    inputIdCard.value = ''; 
-
-    closeEditModal()
 
 
-}
 
 
-function closeEditModal(){
+function closeEditModal() {
 
- ModalForEditCard.classList.remove('active'); 
+    ModalForEditCard.classList.remove('active');
 
 }

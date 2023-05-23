@@ -649,93 +649,213 @@ main {
 
 
 
+
     .todo-column {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        margin-top: 170px;
         height: auto;
-        gap: 100px;
+        margin-top: 150px;
+        padding: 20px;
+       
+        gap: 60px;
 
-
+    
         .column--components {
+            overflow-x: hidden;
+            overflow-y: hidden;
             @include flexCenter(column);
             align-items: center;
             background-color: #E9EBEE;
             width: 300px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
+            height: 350px; 
+
+            border-radius: 12px;
             box-shadow: 1px 1px 5px;
             padding: 10px;
             position: relative;
 
-
-            .btn-cardEditColumn,
-            .btn-cardDelColumn {
-                cursor: pointer;
-                font-size: 17px;
-            }
-
-            .btn-cardEditColumn {
-                color: #172b4d;
-            }
-
-            .btn-cardDelColumn {
-                color: #ff0000;
-            }
-
-
-
-            .btn--column {
+            .header-column{
+                position: fixed;
                 display: flex;
-                gap: 12px;
-                position: absolute;
-                padding-right: 8px;
-                right: 0;
+                justify-content: center;
+                height: 50px;
+                width:300px;
+
+                .column-title {
+                    margin-top: 12px;
+                    font-family: $txt-title;
+                    font-size: 17px;
+                    text-align: center;
+                   
+                    color: #172b4d;
+                }
 
 
+                .btn--column {
+                    display: flex;
+                    gap: 6px;
+                    position: absolute;
+                    padding-right: 0px;
+                    right: 0;
+                    top: 0;
+    
+                    .btn-cardEditColumn,
+                    .btn-cardDelColumn {
+                        cursor: pointer;
+                        font-size: 17px;
+                    }
+                    
+                    .btn-cardEditColumn {
+                        color: rgb(65, 64, 64);
+                    }
+        
+                    .btn-cardDelColumn {
+                        color: #ff0000;
+                    }
+                }
 
+               
             }
 
-            .column-title {
-                margin-top: 12px;
-                font-family: $txt-title;
-                font-size: 17px;
-                text-align: center;
-                padding-top: 5px;
-                color: #172b4d;
+            .cardDiv{
+                @include flexCenter(column); 
+                width: 100%;
+                
+                overflow-y: auto;
+                overflow-x: hidden;
+                
+                margin-top:40px;
+
+                    
+                &::-webkit-scrollbar {
+                    background-color: #113d80;
+                    width: 2px;
+                    
+                }
+
+
+
+                &::-webkit-scrollbar-track {
+                    background-color:#E9EBEE ;
+                    height: 10px;
+                    
+                }
+
+
+                &::-webkit-scrollbar-thumb {
+                    background-color:rgba(87, 86, 86, 0.377);
+                    border-radius: 50%;
+    
+                
+                }
+                
+
             }
 
 
             .card {
-                h3 {
-                    font-size: 14px;
-                    font-weight: 400;
-                    font-family: $txt-card;
-                }
+                position: relative;
                 background-color: #FFFFFF;
                 cursor: pointer;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
                 margin-top: 20px;
-                width: 260px;
-                box-shadow: 0px 1px 1px #00000044;
+                width: 250px;
                 height: auto;
+                box-shadow: 0px 1px 1px #00000044;
+                border-radius: 10px;
+                
                 font-family: $txt-title;
                 font-weight:400;
-                font-size: 13px;
+                font-size: 12px;
                 text-align: center;
                 padding: 10px;
-                gap: 25px;
+               
                 color: #172b4d;
                 transition: 0.3s ease-in;
 
-                &:hover {
-                    box-shadow: 0px 1px 1px #000000;
+                h3 {
+                    font-size: 14px;
+                    font-weight: 400;
+                    font-family: $txt-card;
+                    height: auto;
+                    word-break:keep-all;
+                }
 
+                
+                &:hover {
+                    
+                    background-color: #F1F2F4;
 
                 }
+
+
+                .card-header{
+                    position: relative;
+                    display: flex;
+                    width: 100%;
+                    height: 70px;
+                    
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+
+                   p{
+                    font-size: 16px;
+                    font-weight: 700;
+                    position: absolute;
+                    right: 0;
+                    top: -15px;
+                    z-index: 1;
+
+                   }
+
+                }
+
+                .box-OptionsCard
+                {
+                    display: flex;
+                   
+                    flex-direction: row;
+                    gap: 2px;
+                    position: absolute;
+                    border-radius: 12px;
+                   
+                    left: 80px;
+                    top: -6px;
+                   
+                   
+                    
+                    
+        
+        
+                    li{
+                        font-size: $txt-main;
+                        opacity: 0;
+                        width: 60px;
+                        background-color: #113d80;
+                        border-radius: 5px;
+                        color: #FFFFFF;
+                        transition: 0.3s all ease-in-out;
+                        z-index: -1;
+        
+        
+                        &:hover{
+                            background-color: #8a8989;
+                            color: white;
+                        }
+                    }
+
+                    &.active{
+
+                        li{
+                            z-index: 1;
+                            opacity: 1;
+                        }
+                    }
+                }
+
 
                 .card-components {
                     display: flex;
@@ -755,20 +875,11 @@ main {
                     }
                 }
 
-
-
-
-
-
-
-
-
-
-
             }
 
+            
         }
-
+        
     }
 
 

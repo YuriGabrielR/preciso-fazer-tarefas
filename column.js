@@ -58,23 +58,39 @@ function columnsAdd (){
      dataColumns.forEach( (column, index) => {
         const ColumnsHTML = `
             <div class="column--components" data-index="${index}" > 
+
                 <input autocomplete="off"  type="hidden" id="idHidden" 
                 value="${column.id}">
-                <div class="btn--column">
-                    <i class="fa-solid fa-pen btn-cardEditColumn" onclick="editColumn(${column.id})"></i>
-                    <i class="fa-solid fa-trash btn-cardDelColumn" onclick="delColumn(${column.id}, event)" data-target="${column.id}"></i> 
-                </div>
+                
+                <div class="header-column">
+
                     <h3 class="column-title">${column.titleColumn}</h3>
-                    <form class="formAddCard" data-idColumn= '${column.id}'>
-                    <div class="todo-add">
-                    <button class="btn--todoadd" type="submit" onclick="openInputCardModal(event, '${column.titleColumn}', ${column.id})">
-                        <i class="fa-solid fa-circle-plus"></i>
-                        Adicione uma nova tarefa
-                    </button>
-                    </div> 
-                    </form>
+
+                    <div class="btn--column">
+
+                     <i class="fa-regular fa-pen-to-square btn-cardEditColumn" onclick="editColumn(${column.id})">
+
+                     </i>
+                        <i class="fa-regular fa-trash-can btn-cardDelColumn" 
+                        onclick="delColumn(${column.id}, event)"
+                        data-target="${column.id}">
+                        
+                        </i> 
+                </div>
+                
+                </div>
                     
                     <div data-id="${column.id}" class="cardDiv"></div>
+                    <div class="todo-add">
+                    <form class="formAddCard" data-idColumn= '${column.id}'>
+
+                    <button class="btn--todoadd" type="submit" onclick="openInputCardModal(event, '${column.titleColumn}', ${column.id})">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Adicione uma nova tarefa
+                </button>
+                    </form>
+                    
+                    </div> 
             </div>
 
         `;            
@@ -92,8 +108,13 @@ function columnsAdd (){
 
 function delColumn (id, e){
     e.preventDefault();
-    let elementNode = e.target.parentNode.parentNode;
+  
+    let elementNode = e.target.parentNode.parentNode.parentNode;
     let targetBtnAttribute = e.target.getAttribute('data-target');
+    
+    let dataCardsLocalStorage = JSON.parse(localStorage.getItem('db_Cards')); 
+
+    let setLocalStorageCards = ()=> { localStorage.setItem('db_Cards', JSON.stringify(dataArrCards));};
 
 
     if(id == targetBtnAttribute){
@@ -102,12 +123,15 @@ function delColumn (id, e){
         })
 
         dataColumns.splice(index, 1);
+    
         setLocalStorage();
-        
+       
         elementNode.remove();
 
     }
   
+
+    
 }
 
 
