@@ -15,179 +15,157 @@
 <body>
 
     <header>
+        <div class="h-logo">
 
-        <p id="txt-header">
-            <i class="fa-solid fa-pen-to-square icon-header"></i>
-            Preciso Fazer - ToDo List
-        </p>
+            <img 
+             class="img__logo"
+             src="./assets/images/logo-page.png"
+             alt="Imagem da logo - to-do-list"
+            >
 
+            <p id="h-text"> Preciso Fazer </p>
+            
+        </div>
 
-        <nav class="nav-header">
-            <ul>
-                <li>
-                    <a class="link-header" href="https://github.com/YuriGabrielR/to-do-list" target="_blank">
+       
+            <div class="settings">
 
-                        <i class="fa-brands fa-github icon-nav"></i>
+                <div class="settings__inputColor">
+    
+                    <i class="fa-solid fa-fill-drip inputColor__icon"></i>
+                    <input type="color" value="#586774" id="inputColor--setColor">
+    
+                </div>
+    
+                <div class="settings__imageBackground">
+    
+                    <button class="btn--setImageBackground">
+    
+                        <i class="fa-solid fa-image btn__iconImg "></i>
+    
+                       <p>Selecionar imagem de fundo</p> 
+    
+                    </button>
+                   
+                </div>
+    
+                <div class="settings__filter">
+    
+                    <i class="fa-solid fa-arrow-down-short-wide filterIcon"></i>
+    
+                    <select id="filter__select">
+    
+                        <option value="all"> Todos </option>
+                        <option value="Pendentes"> Pendentes </option>
+                        <option value="Done"> Concluídos </option>
+                       
+                    </select>
+    
+                </div>
+    
+               
+            </div>
 
-                    </a>
-                </li>
+            <nav>
+                <button class="nav__menuBtn">
+                    <i class="fa-solid fa-bars-staggered menu--btn "></i>
+                    <i class="fa-solid fa-xmark menu--btnClose"></i>
+                </button>
+    
+                
+                <ul class="menu__list">
+    
+                    <li class="menu__link">
+                        <a class="menu__link" 
+                        target="_blank"
+                        href="https://github.com/YuriGabrielR/preciso-fazer-toDo"> 
+                        Github - Repositório </a>
+                    </li>
+                
+                    <li class="menu__link">
+                        <a href="https://unsplash.com/documentation"
+                           target="_blank"> 
+                            API - Unsplash 
+                        </a>
+                    </li>
+    
+                    <li class="menu__link">
+    
+                        <a  href="mailto:yurigabriel21@yahoo.com"
+                            target="_blank"> 
+                            Feedbacks & Melhorias 
+                        </a>
+    
+                    </li>
+    
+    
+                    <span class="portfolio">
+                        <a 
+                         href="https://yurigabrielr.github.io/portfolio/"
+                         target="_blank"> 
+                        
+                         © by Yuri Ramos 
+                        </a>
+                    </span> 
+                </ul>
+                
+               
+            </nav>
+        
+        
 
-                <li>
-                    <a class="link-header" href="https://www.linkedin.com/in/yurigabrielramos/" target="_blank">
-
-                        <i class="fa-brands fa-linkedin icon-nav"></i>
-                    </a>
-
-                </li>
-
-
-                <li>
-                    <a class="link-header" href="https://yurigabrielr.github.io/portfolio/" target="_blank">
-
-                        <i class="fa-solid fa-earth-americas icon-nav"></i>
-
-                    </a>
-
-
-                </li>
-            </ul>
-
-        </nav>
+        
 
     </header>
 
 
     <main>
-        <div class="todo-ColumnControls">
-
+        <div class="InputColumnInsert">
             <form class="todo-addcolumn">
                 <input type="hidden" id="idColumn">
-
+    
                 <input type="text" class="input-column" autocomplete="off" placeholder="Adicione sua nova lista">
-
+    
                 <button type="submit" id="btn-addcolumn">
-
+    
                     <i class="fa-solid fa-circle-plus iconAddColumn"></i>
-
+    
                 </button>
-
+    
             </form>
-
-
-            <div class="bgColor">
-
-                <i class="fa-solid fa-palette iconBgColor"></i>
-                <input type="color" value="#8B8B8B" id="input-colorTheme">
-
-
-            </div>
-
-
-            <div class="filter-todo">
-                <i class="fa-solid fa-filter filterIcon"></i>
-                <select name="" id="filter">
-
-                    <option value="all">Todos</option>
-                    <option value="Done">Concluídos</option>
-                    <option value="Pendentes">Pendentes</option>
-                </select>
-
-            </div>
-
         </div>
+        
 
         <div class="todo--container">
             <div class="todo-column"></div>
         </div>
 
-        <div class="modalCard"></div>
-
-        <div class="modalEditColumn">
-            <div class="modal">
-
-                <p id="titleModalEdit">Edite o nome da sua lista</p>
-
-                <input autocomplete="off" type="text" id="editColumn">
-
-                <div class="buttonsEditModal">
-                    <i class="fa-solid fa-square-check doneModalEdit"></i>
-                    <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="modalEditCard">
-            <div class="cardEdit">
-                <i class="fa-solid fa-xmark" id="closeEditCardModal" onclick="closeEditModal()"></i>
-                <h2 class="textCard">Edição</h2>
-
-                <div class="box-inputEditModal">
-                    <form>
-                        <label for="inputEditCard">Tarefa a fazer:</label>
-                        <input 
-                        placeholder="Reescreva sua tarefa" 
-                        type="text" 
-                        id="inputEditCard" 
-                        autocomplete="off">
-                    </form>
-                </div>
-
-                <div class="inputs-controlls">
-                    <div class="date-concluded">
-                        <span>
-                            <label id="date-label" for="date">Prazo para conclusão</label>
-                        </span>
-                        <input id="date-input" max="9999-12-31" type="date">
-                    </div>
-
-                    <div class="area-progress">
-                        <span class="spanProgress">
-                            <p> Progresso </p>
-                        </span>
-
-                        <select name="progresso" id="progressOptions">
-                            <option value="Não Iniciada"> Não Iniciada </option>
-                            <option value="Em andamento"> Em andamento </option>
-                            <option value="Concluída"> Concluída </option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="area-priority">
-                        <p> Prioridade </p>
-                        <select name="Prioridade" id="priorityCard">
-
-                            <option> Baixa </option>
-                            <option> Média </option>
-                            <option> Importante </option>
-                            <option> Urgente </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="area-modalBtnCard">
-                    <button 
-                    class="btn-modalCard" 
-                    id="editCardModalBtn"
-                    onclick="saveEditModalCard()">
-                        Salvar alterações
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
     </main>
 
 
+    <div class="modalEditColumn">
+        <div class="modal">
 
+            <p id="titleModalEdit">Edite o nome da sua lista</p>
+
+            <input autocomplete="off" type="text" id="editColumn">
+
+            <div class="buttonsEditModal">
+                <i class="fa-solid fa-square-check doneModalEdit"></i>
+                <i class="fa-solid fa-rectangle-xmark closeModalEdit"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modalCard"></div>
+    <div class="modalEditCard"> </div>
 
     <script src="https://kit.fontawesome.com/f3b59ce49d.js" crossorigin="anonymous"></script>
     <script src="./column.js"></script>
     <script defer src="./cards.js"></script>
     <script src="./themeBg.js"></script>
+    <script src="./menu.js"></script>
 </body>
 
 </html>

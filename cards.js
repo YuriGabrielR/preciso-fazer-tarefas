@@ -1,9 +1,3 @@
-
-let ModalForEditCard = document.querySelector('.modalEditCard')
-let inputEdit = document.querySelector('#inputEditCard');
-let dateModalInput = document.querySelector('#date-input');
-let progressStatus = document.querySelector('#progressOptions');
-let priorityCard = document.querySelector('#priorityCard');
 let InputHiddenColumn = document.querySelector('#idColumnHidden');
 let inputIdCard = document.querySelector('#idHidden');
 
@@ -147,7 +141,6 @@ function cardsAdd() {
 
 
         let cardHTML =
-
         `
             <div class="card" data-target ="${card.id}">
 
@@ -163,13 +156,13 @@ function cardsAdd() {
             
                 <ul class="box-OptionsCard">
 
-                    <li onclick="editModal(${card.id})"> 
-                    <i class="fa-solid fa-pencil"></i>
+                    <li onclick="editModal(${card.id}, ${card.idColumn})"> 
+                    
                     Editar </li>
 
                     <li onclick="deleteCard(${card.id}, event)"> 
                     Excluir 
-                    <i class="fa-solid fa-trash-can"></i>
+                    
                     </li> 
 
                 </ul>
@@ -230,16 +223,90 @@ function deleteCard(id, e){
 
 }
 
-function editModal(id) {
+function editModal(id, idColumn) {
+
+    let ModalForEditCard = document.querySelector('.modalEditCard');
+    
+    let modalEditHTML = 
+    `
+    <div class="cardEdit">
+                <i class="fa-solid fa-xmark" id="closeEditCardModal" onclick="closeEditModal()"></i>
+                <h2 class="textCard">Edição</h2>
+
+                <div class="box-inputEditModal">
+                    <form>
+                        <label for="inputEditCard">Tarefa a fazer:</label>
+                        <input 
+                        placeholder="Reescreva sua tarefa" 
+                        type="text" 
+                        id="inputEditCard" 
+                        autocomplete="off">
+                    </form>
+                </div>
+
+                <div class="inputs-controlls">
+                    <div class="date-concluded">
+                        <span>
+                            <label id="date-label" for="date">Prazo para conclusão</label>
+                        </span>
+                        <input id="date-input" max="9999-12-31" type="date">
+                    </div>
+
+                    <div class="area-progress">
+                        <span class="spanProgress">
+                            <p> Progresso </p>
+                        </span>
+
+                        <select name="progresso" id="progressOptions">
+                            <option value="Não Iniciada"> Não Iniciada </option>
+                            <option value="Em andamento"> Em andamento </option>
+                            <option value="Concluída"> Concluída </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="area-priority">
+                        <p> Prioridade </p>
+                        <select name="Prioridade" id="priorityCard">
+
+                            <option> Baixa </option>
+                            <option> Média </option>
+                            <option> Importante </option>
+                            <option> Urgente </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="area-modalBtnCard">
+                    <button 
+                    class="btn-modalCard" 
+                    id="editCardModalBtn"
+                    onclick="saveEditModalCard(${id}, ${idColumn})">
+                        Salvar alterações
+                    </button>
+                </div>
+            </div>
+
+
+    
+    `
+    
+    ModalForEditCard.innerHTML = modalEditHTML; 
     ModalForEditCard.classList.add('active');
+
+    let inputEdit = document.querySelector('#inputEditCard');
+    let dateModalInput = document.querySelector('#date-input');
+    let progressStatus = document.querySelector('#progressOptions');
+    let priorityCard = document.querySelector('#priorityCard');
 
 
     const indexCard = dataArrCards.findIndex((card) => {
         return card.id == id;
-
     })
 
     const card = dataArrCards[indexCard];
+
 
 
     inputEdit.value = card.titleCard;
@@ -251,11 +318,41 @@ function editModal(id) {
 
 
 
+function saveEditModalCard(id, idColumn){
 
+    let inputEdit = document.querySelector('#inputEditCard');
+    let dateModalInput = document.querySelector('#date-input');
+    let progressStatus = document.querySelector('#progressOptions');
+    let priorityCard = document.querySelector('#priorityCard');
+
+
+    const newCardEdited = {
+
+        idColumn: idColumn,
+        id: id,
+        titleCard: inputEdit.value,
+        date: dateModalInput.value,
+        progress: progressStatus.value,
+        priority: priorityCard.value
+    }
+
+
+    let index = dataArrCards.findIndex(card =>{
+
+        return card.id == id; 
+
+    })
+
+    dataArrCards[index] = newCardEdited;
+    cardsAdd(); 
+    setLocalStorageCards();
+
+    closeEditModal(); 
+}
 
 
 function closeEditModal() {
-
+    let ModalForEditCard = document.querySelector('.modalEditCard');
     ModalForEditCard.classList.remove('active');
 
 }

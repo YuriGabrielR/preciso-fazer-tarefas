@@ -36,111 +36,94 @@ a:visited {
 }
 
 body {
-  background-color: rgb(151, 144, 144);
+  overflow-y: hidden;
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  overflow-y: hidden;
-  overflow-x: auto;
+  background-color: rgb(151, 144, 144);
 }
 
 header {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 30px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 10px #000000;
-  height: 60px;
-  width: 100vw;
   position: fixed;
-}
-header #txt-header {
-  font-family: "Lobster", "cursive";
-  font-size: 1.8rem;
-  color: #172b4d;
-}
-header #txt-header i {
-  font-size: 1.2em;
-}
-header .nav-header {
-  padding: 50px;
-}
-header .nav-header ul {
+  top: 0;
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 18px;
+  justify-content: space-around;
+  gap: 10px;
+  background-color: rgba(117, 115, 115, 0.432);
+  box-shadow: 0px 0px 5px #000000;
+  padding: 0 20px;
+  height: auto;
+  width: 100%;
+  z-index: 2;
 }
-header .nav-header .icon-nav {
-  font-size: 2em;
-  color: #172b4d;
+@media (max-width: 540px) {
+  header {
+    flex-wrap: wrap;
+    padding: 5px 5px;
+    gap: 15px;
+  }
 }
-
-main {
-  padding: 2em;
-  transition: 0.5s all;
-  min-height: 80vh;
-}
-main ::-webkit-scrollbar-track {
-  background-color: #172b4d;
-}
-main .todo-ColumnControls {
-  position: fixed;
-  margin-top: 80px;
+header .h-logo {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  gap: 60px;
 }
-main .todo-ColumnControls .todo-addcolumn {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
+@media (max-width: 482px) {
+  header .h-logo {
+    width: 100%;
+    justify-content: center;
+  }
 }
-main .todo-ColumnControls .todo-addcolumn .input-column {
-  height: 30px;
-  width: 280px;
-  text-align: center;
-  border: none;
-  border-radius: 7px;
-  box-shadow: 1px 1px 4px #000000;
+header .h-logo .img__logo {
+  width: 40px;
+}
+@media (max-width: 540px) {
+  header .h-logo .img__logo {
+    width: 30px;
+  }
+}
+header .h-logo #h-text {
+  font-weight: 800;
+  font-size: 1.4rem;
   font-family: "Montserrat", "sans-serif";
-  font-size: 1em;
+  color: #ffffff;
 }
-main .todo-ColumnControls .todo-addcolumn .input-column:focus {
-  outline: none;
+@media (max-width: 540px) {
+  header .h-logo #h-text {
+    font-size: 1.2rem;
+  }
 }
-main .todo-ColumnControls .todo-addcolumn #btn-addcolumn {
-  background-color: transparent;
-  color: none;
-  border: none;
-  position: absolute;
-  padding-left: 10px;
-}
-main .todo-ColumnControls .todo-addcolumn .iconAddColumn {
-  font-size: 1.9em;
-  color: #172b4d;
-  cursor: pointer;
-}
-main .todo-ColumnControls .bgColor {
-  border-radius: 8px;
+header .settings {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  gap: 40px;
+}
+@media (max-width: 965px) {
+  header .settings {
+    gap: 15px;
+  }
+}
+header .settings .settings__inputColor {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   justify-content: center;
   gap: 10px;
-  width: 100px;
-  background-color: #FFFFFF;
-  box-shadow: 1px 1px 4px #000000;
+  width: 65px;
 }
-main .todo-ColumnControls .bgColor .iconBgColor {
+header .settings .settings__inputColor .inputColor__icon {
   font-size: 1.4em;
-  color: #172b4d;
+  color: #ffffff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.486);
 }
-main .todo-ColumnControls .bgColor #input-colorTheme {
+@media (max-width: 540px) {
+  header .settings .settings__inputColor .inputColor__icon {
+    font-size: 1.2em;
+  }
+}
+header .settings .settings__inputColor #inputColor--setColor {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -151,38 +134,257 @@ main .todo-ColumnControls .bgColor #input-colorTheme {
   background-color: transparent;
   cursor: pointer;
 }
-main .todo-ColumnControls .bgColor #input-colorTheme::-webkit-color-swatch {
+@media (max-width: 540px) {
+  header .settings .settings__inputColor #inputColor--setColor {
+    width: 26px;
+    height: 28px;
+  }
+}
+header .settings .settings__inputColor #inputColor--setColor::-webkit-color-swatch {
   border: 1px solid rgba(0, 0, 0, 0.144);
   border-radius: 50%;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2470588235);
 }
-main .todo-ColumnControls .filter-todo {
+header .settings .settings__filter {
   position: relative;
-  width: 140px;
+  padding-left: 12px;
+  width: 135px;
   height: 30px;
 }
-main .todo-ColumnControls .filter-todo .filterIcon {
+header .settings .settings__filter .filterIcon {
   position: absolute;
+  top: 5px;
+  left: 0;
   font-size: 1.3em;
-  color: #172b4d;
-  top: 20%;
-  left: 5px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.37);
+  color: #ffffff;
 }
-main .todo-ColumnControls .filter-todo #filter {
-  box-shadow: 1px 1px 4px #000000;
-  width: 160px;
+@media (max-width: 540px) {
+  header .settings .settings__filter .filterIcon {
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 600px) {
+  header .settings .settings__filter .filterIcon {
+    right: 72px;
+  }
+}
+@media (max-width: 390px) {
+  header .settings .settings__filter .filterIcon {
+    right: 85px;
+  }
+}
+header .settings .settings__filter #filter__select {
+  cursor: pointer;
+  color: #ffffff;
+  width: 100%;
   height: 30px;
-  border-radius: 8px;
-  text-align: center;
   border: none;
+  background-color: transparent;
+  border-radius: 8px;
   font-size: 1em;
   font-family: "Montserrat", "sans-serif";
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+header .settings .settings__filter #filter__select option {
+  background-color: #8a8989;
+  font-weight: 700;
+}
+@media (max-width: 540px) {
+  header .settings .settings__filter #filter__select {
+    font-size: 0.95em;
+  }
+}
+header .settings .settings__imageBackground .btn--setImageBackground {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: "Montserrat", "sans-serif";
+  color: #ffffff;
+}
+header .settings .settings__imageBackground .btn--setImageBackground .btn__iconImg {
+  font-size: 1.3em;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.37);
+  color: #ffffff;
+}
+@media (max-width: 540px) {
+  header .settings .settings__imageBackground .btn--setImageBackground .btn__iconImg {
+    font-size: 1.1em;
+  }
+}
+@media (max-width: 914px) {
+  header .settings .settings__imageBackground .btn--setImageBackground p {
+    display: none;
+  }
+}
+header nav {
+  position: relative;
+}
+header nav .nav__menuBtn {
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+}
+header nav .nav__menuBtn .menu--btn {
+  font-size: 1.3em;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.37);
+  color: #ffffff;
+  opacity: 1;
+  transition: 0.4s ease-in-out;
+}
+header nav .nav__menuBtn .menu--btn.active {
+  opacity: 0;
+}
+header nav .nav__menuBtn .menu--btnClose {
+  opacity: 0;
+  font-size: 1.3em;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.37);
+  color: #ffffff;
+  transition: 0.3s ease-in-out;
+}
+header nav .nav__menuBtn .menu--btnClose.active {
+  opacity: 1;
+  transform: translateX(-20px);
+}
+header nav .menu__list {
+  position: absolute;
+  transform: translateX(400%);
+  top: 35px;
+  right: 0;
+  width: 180px;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(128, 128, 128, 0.445);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  border-radius: 2px;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+}
+header nav .menu__list.active {
+  transform: translateX(0%);
+}
+header nav .menu__list .menu__link {
+  cursor: pointer;
+  position: relative;
+}
+header nav .menu__list .menu__link a {
+  font-size: 14px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 800;
+  color: #ffffff;
+}
+header nav .menu__list .menu__link::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #bcbdbe;
+  transition: 0.3s ease-in-out;
+}
+header nav .menu__list .menu__link:hover::after {
+  width: 100%;
+}
+header nav .menu__list .portfolio {
+  width: 100%;
+  text-align: center;
+}
+header nav .menu__list .portfolio a {
+  position: relative;
+  font-size: 12px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 800;
+  color: #ffffff;
+  transition: 0.3s ease-in-out;
+}
+header nav .menu__list .portfolio a::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #bcbdbe;
+  transition: 0.3s ease-in-out;
+}
+header nav .menu__list .portfolio a:hover::after {
+  width: 100%;
+}
+@media (max-width: 420px) {
+  header nav .menu__list {
+    width: 100vw;
+    top: 22px;
+    right: -15px;
+  }
+}
+
+main {
+  position: relative;
+  overflow-x: hidden;
+  transition: 0.5s all;
+  min-height: 100vh;
+  top: 60px;
+}
+main .InputColumnInsert {
+  position: absolute;
+  top: 70px;
+  padding-left: 20px;
+}
+main .InputColumnInsert .todo-addcolumn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+main .InputColumnInsert .todo-addcolumn .input-column {
+  height: 30px;
+  width: 280px;
+  text-align: center;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #000000;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 1em;
+}
+main .InputColumnInsert .todo-addcolumn .input-column:focus {
+  outline: none;
+}
+main .InputColumnInsert .todo-addcolumn #btn-addcolumn {
+  background-color: transparent;
+  color: none;
+  border: none;
+  position: absolute;
+  padding-left: 10px;
+}
+main .InputColumnInsert .todo-addcolumn .iconAddColumn {
+  font-size: 1.9em;
   color: #172b4d;
+  cursor: pointer;
 }
 
 .modalCard {
   display: none;
-  background-color: rgba(0, 0, 0, 0.1764705882);
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   width: 100vw;
   min-height: 100vh;
   position: absolute;
@@ -543,6 +745,7 @@ main .todo-ColumnControls .filter-todo #filter {
 }
 
 .todo--container {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 50px;

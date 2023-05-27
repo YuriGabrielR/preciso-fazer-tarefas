@@ -85,8 +85,8 @@ function columnsAdd (){
                     <form class="formAddCard" data-idColumn= '${column.id}'>
 
                     <button class="btn--todoadd" type="submit" onclick="openInputCardModal(event, '${column.titleColumn}', ${column.id})">
-                    <i class="fa-solid fa-circle-plus"></i>
-                    Adicione uma nova tarefa
+                    <i class="fa-solid fa-plus"></i>
+                        Adicione uma nova tarefa
                 </button>
                     </form>
                     

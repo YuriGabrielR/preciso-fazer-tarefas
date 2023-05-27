@@ -1,5 +1,5 @@
 
-const inputColorBg = document.querySelector('#input-colorTheme'); 
+const inputColorBg = document.querySelector('#inputColor--setColor'); 
 
 function setThemeLocalStorage(color){
 
