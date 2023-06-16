@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Preciso Fazer | Gerenciador de Tarefas  </title>
+    <title> Preciso Fazer | Tarefas  </title>
     <meta name="description" content="Gerencie suas tarefas em nossa plataforma! O melhor toDoList que você usará.">
     <link rel="stylesheet" href="./SASS/style.css">
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+   
 
 </head>
 
@@ -28,24 +28,24 @@
         </div>
 
        
-            <div class="settings">
+        <div class="settings">
 
-                <div class="settings__inputColor">
+            <div class="settings__inputColor">
     
-                    <i class="fa-solid fa-fill-drip inputColor__icon"></i>
-                    <input type="color" value="#586774" id="inputColor--setColor">
+                <i class="fa-solid fa-fill-drip inputColor__icon"></i>
+                <input type="color" value="#586774" id="inputColor--setColor">
     
-                </div>
+            </div>
     
                 <div class="settings__imageBackground">
     
-                    <button class="btn--setImageBackground">
+                <button class="btn--setImageBackground">
     
-                        <i class="fa-solid fa-image btn__iconImg "></i>
+                 <i class="fa-solid fa-image btn__iconImg "></i>
     
-                       <p>Selecionar imagem de fundo</p> 
+                 <p> Plano de Fundo</p> 
     
-                    </button>
+                </button>
                    
                 </div>
     
@@ -64,7 +64,7 @@
                 </div>
     
                
-            </div>
+         </div>
 
             <nav>
                 <button class="nav__menuBtn">
@@ -111,33 +111,31 @@
                 
                
             </nav>
-        
-        
-
-        
-
+    
     </header>
 
 
     <main>
-        <div class="InputColumnInsert">
-            <form class="todo-addcolumn">
-                <input type="hidden" id="idColumn">
+        <div class="columnSettings ">
+            
+            <form class="column__form">
+
+                <input type="hidden" id="column__id">
     
-                <input type="text" class="input-column" autocomplete="off" placeholder="Adicione sua nova lista">
+                <input type="text" class="column__input" autocomplete="off" placeholder="Adicione sua nova lista">
     
-                <button type="submit" id="btn-addcolumn">
+                <button type="submit" id="column--btn">
     
-                    <i class="fa-solid fa-circle-plus iconAddColumn"></i>
+                    <i class="fa-solid fa-plus column--icon"></i>
     
                 </button>
     
             </form>
         </div>
-        
+    
 
-        <div class="todo--container">
-            <div class="todo-column"></div>
+        <div class="columnContainer">
+            <div class="column"></div>
         </div>
 
     </main>
@@ -161,9 +159,82 @@
     <div class="modalCard"></div>
     <div class="modalEditCard"> </div>
 
+    <div class="modalImagesBg">
+
+        <div class="galleryImages">
+
+            <i class="fa-solid fa-xmark closeGallery"></i>
+            <span class="galleryImages__header">
+
+                <img src="./assets/images/logo-pixabay.png" alt="">
+
+                <span>
+                    <input 
+                    id="searchImages"
+                    type="text" 
+                    placeholder= " Procure por imagens! Exemplo: Montanhas, Paisagens...">   
+
+                    <p class="error">
+                        Pressione Enter para buscar imagens! 
+                    </p>
+                </span>
+               
+
+            </span>
+
+            <div class="container-images">
+                
+                <div class="images">
+
+                    <!-- <span class="box-image">
+                        <img src="https://pixabay.com/get/g0cfa8a3200e196fb6202aea11816deaeb1586a98f69fb5ac557e9a6d89745c05f1d4c5813d8730945dd5fce8bd0ecb54_640.jpg" alt="">
+
+
+                        <span class="buttons-image">
+
+                            <button>
+                                <i class="fa-solid fa-plus"></i>
+                                
+                            </button>
+
+                            <button id="addImageForBg">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Info
+                            </button>
+
+                        </span>
+
+                    </span> -->
+                    
+                    
+                </div>
+                 
+            </div>
+
+
+            <div class="galleryImages__pagination">
+
+                <span class="pagination">
+
+                    <i class="fa-solid fa-angle-left previousPage"></i>
+
+                    <input 
+                    id="pageNumberInput"
+                    value="1"
+                    type="number"> <p id="hitsNumber"> / 100 </p>
+
+                    <i class="fa-solid fa-chevron-right nextPage"></i>
+
+                </span>
+
+            </div>
+        </div>
+
+    </div>
+
     <script src="https://kit.fontawesome.com/f3b59ce49d.js" crossorigin="anonymous"></script>
-    <script src="./column.js"></script>
-    <script defer src="./cards.js"></script>
+
+    <script src="./script.js"></script>
     <script src="./themeBg.js"></script>
     <script src="./menu.js"></script>
 </body>
