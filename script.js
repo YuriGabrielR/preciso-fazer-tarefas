@@ -23,6 +23,7 @@ let setLocalStorageCards = () => { localStorage.setItem('db_Cards', JSON.stringi
 (function loadContents(){
     generateColumn(); 
     generateCard();
+    insertTagCard()
 })(); 
 
 formColumn.addEventListener('submit', getInputColumn);
@@ -44,7 +45,7 @@ function getInputColumn(e){
         setLocalStorage(); 
         generateColumn();
         generateCard();
-        
+        insertTagCard()
     }
     
      else {
@@ -339,7 +340,7 @@ function createCards(idColumn) {
         setLocalStorageCards();
         generateColumn(); 
         generateCard();
-       
+        insertTagCard ()
 
     } else {
 
@@ -417,7 +418,7 @@ function generateCard() {
                         </p>
                     </div>
 
-                    <span>${card.status}</span>
+                    <span class="status-att">${card.status}</span>
 
                 </div>
             </div>
@@ -429,7 +430,7 @@ function generateCard() {
         divForInsertCards.innerHTML += cardHTML;
        
         
-        
+       
     })
 
     
@@ -503,7 +504,7 @@ function editTask(id, idColumn) {
 
                         </span>
 
-                        <input id="date-input" max="9999-12-31" type="date">
+                        <input id="date-input editTask" max="9999-12-31" type="date">
                     </div>
 
                     <div class="taskEdit__progress">
@@ -602,7 +603,7 @@ function saveEditModalCard(id, idColumn){
     dataArrCards[index] = newCardEdited;
     generateCard(); 
     setLocalStorageCards();
-
+    insertTagCard ()
     closeTaskEditModal(); 
 }
 
@@ -611,3 +612,63 @@ function closeTaskEditModal() {
     let ModalForEditCard = document.querySelector('.modalEditCard');
     ModalForEditCard.classList.remove('active');
 }
+
+function insertTagCard (){
+    let tagCard = document.querySelectorAll('.status-att');
+
+    tagCard.forEach(card =>{
+
+        switch(card.textContent){
+            case "Pendente":
+                card.classList.add('pending')
+            break; 
+
+            case "Concluída":
+                card.classList.add('concluded');
+            break;
+        }
+       
+    })
+    
+}
+
+
+let filterInput = document.querySelector('#filter__select');
+
+filterInput.addEventListener('input', filterCard);
+
+function filterCard({target}){
+
+    let divsTaskPending = document.querySelectorAll('.status-att.pending'); 
+    let divsTaskConcluded = document.querySelectorAll('.status-att.concluded'); 
+    let divAllTasks = document.querySelectorAll('.isHidden'); 
+  
+    switch(target.value){
+
+        case "Concluídos":
+            divsTaskPending.forEach(task =>{
+                task.offsetParent.classList.add('isHidden');
+
+            })             
+        break;
+
+        case "Pendentes":
+            divsTaskConcluded.forEach(task =>{
+               
+                task.offsetParent.classList.add('isHidden');
+            
+
+            })             
+        break;
+
+        case "Todos":
+            divAllTasks.forEach(task =>{
+                task.classList.remove('isHidden'); 
+            })             
+        break;
+    }
+
+}
+
+
+

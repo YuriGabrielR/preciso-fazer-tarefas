@@ -89,10 +89,7 @@ inputPagination.addEventListener('keypress', handleKeypressPage);
     let searchValue = document.querySelector('#searchImages').value;
 
     if(key === 'Enter'){
-
-        console.log(searchValue); 
-        console.log(target.value);
-        galleryImages(searchValue, target.value)
+        galleryImages(searchValue, target.value);
     }
 }
 

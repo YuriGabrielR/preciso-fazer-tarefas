@@ -1347,6 +1347,9 @@ main {
                 height: auto;
                 transition: 0.3s ease-in;
 
+                &.isHidden{
+                    display: none;
+                }
 
                 h3 {
                     font-size: 13px;
@@ -1467,6 +1470,24 @@ main {
                             font-weight: 500;
                             color: #13233F;
                         }
+                    }
+
+                    .status-att{
+                        padding: 2px;
+                        border-radius: 4px;
+                        color: white;
+
+                        &.pending{
+                            background-color: rgb(209, 52, 56)
+                            
+                        }
+
+                        &.concluded{
+                            background-color: rgb(16, 151, 16);
+                        
+                        }
+
+                        
                     }
                 }
 

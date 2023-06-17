@@ -1154,6 +1154,9 @@ main .columnSettings .column__form .column--icon {
   height: auto;
   transition: 0.3s ease-in;
 }
+.columnContainer .column .column__components .task.isHidden {
+  display: none;
+}
 .columnContainer .column .column__components .task h3 {
   font-size: 13px;
   font-weight: 600;
@@ -1236,6 +1239,17 @@ main .columnSettings .column__form .column--icon {
   text-align: left;
   font-weight: 500;
   color: #13233F;
+}
+.columnContainer .column .column__components .task .task__components .status-att {
+  padding: 2px;
+  border-radius: 4px;
+  color: white;
+}
+.columnContainer .column .column__components .task .task__components .status-att.pending {
+  background-color: rgb(209, 52, 56);
+}
+.columnContainer .column .column__components .task .task__components .status-att.concluded {
+  background-color: rgb(16, 151, 16);
 }
 .columnContainer .card {
   display: flex;
