@@ -340,7 +340,7 @@ function createCards(idColumn) {
         setLocalStorageCards();
         generateColumn(); 
         generateCard();
-        insertTagCard ()
+        insertTagCard ();
 
     } else {
 
@@ -348,10 +348,10 @@ function createCards(idColumn) {
     }
 
 
-    inputNameCard.value = ''
-    inputDateCard.value = ''
-    inputStatusCard.value = ''
-    inputStatusCard.value = ''
+    inputNameCard.value = '';
+    inputDateCard.value = '';
+    inputStatusCard.value = '';
+    inputStatusCard.value = '';
 
     closeModalCard();
 }
@@ -504,7 +504,7 @@ function editTask(id, idColumn) {
 
                         </span>
 
-                        <input id="date-input editTask" max="9999-12-31" type="date">
+                        <input id="date-input" max="9999-12-31" type="date">
                     </div>
 
                     <div class="taskEdit__progress">
@@ -546,8 +546,6 @@ function editTask(id, idColumn) {
                     </button>
                 </div>
             </div>
-
-
     
     `
     
