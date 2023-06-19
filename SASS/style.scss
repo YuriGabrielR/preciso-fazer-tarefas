@@ -599,7 +599,9 @@ main {
     @include flexCenter(column); 
     margin-top: 70px;
     transition: 0.5s all;
+    height: 85vh;
     overflow-x: auto;
+    overflow-y: hidden;
 
     &::-webkit-scrollbar {
         
@@ -617,9 +619,13 @@ main {
     }
 
 
-
+    @media (max-width: 320px) {
+        height: 82vh;
+      
+    }
     @media (max-width: 482px) {
         margin-top: 105px;
+      
     }
 
     .columnSettings{
@@ -1244,7 +1250,7 @@ main {
             border-radius: 12px;
             box-shadow: 1px 1px 5px;
             width: 270px;
-
+            
             
             padding: 10px;
             position: relative;

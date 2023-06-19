@@ -528,7 +528,9 @@ main {
   flex-direction: column;
   margin-top: 70px;
   transition: 0.5s all;
+  height: 85vh;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 main::-webkit-scrollbar {
   background-color: rgba(0, 0, 0, 0.2862745098);
@@ -540,6 +542,11 @@ main::-webkit-scrollbar-thumb {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   border-radius: 100px;
+}
+@media (max-width: 320px) {
+  main {
+    height: 82vh;
+  }
 }
 @media (max-width: 482px) {
   main {

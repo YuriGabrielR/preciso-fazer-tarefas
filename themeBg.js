@@ -90,7 +90,7 @@ inputPagination.addEventListener('keypress', handleKeypressPage);
 
     if(key === 'Enter'){
         galleryImages(searchValue, target.value);
-    }
+    }  
 }
 
 let nextPageBtn = document.querySelector('.nextPage'); 
@@ -200,3 +200,6 @@ function insertImageBackground(url){
 
     insertImageBackground();
 })()
+
+
+

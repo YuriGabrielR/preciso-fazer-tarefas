@@ -60,6 +60,7 @@ function resetColumnsHtml(){
     document.querySelector('.column').innerHTML='';
 }
 
+
  function generateColumn (){
    resetColumnsHtml(); 
 
@@ -106,17 +107,10 @@ function resetColumnsHtml(){
     
         divColumn.innerHTML += ColumnsHTML;
        
-        let columnArea = document.querySelectorAll('.column__components'); 
-
-        columnArea.forEach((column) =>{
-
-          
-        })
        
     });
 
    
-
 } 
 
 function delColumn (id, e){
@@ -187,8 +181,7 @@ function editColumn(id){
     
     formColumnId.value = indexColumn.id;
     formColumnEdit.value = indexColumn.titleColumn;
-    
-  
+ 
 }
 
 
@@ -373,10 +366,12 @@ function generateCard() {
     clearHtmlColumns();
 
     dataArrCards.forEach((card) => {
-
+        
         let divForInsertCards = document.querySelector
         (`[data-id ="${card.idColumn}"]`);
-
+        let date = new Date(card.date).setHours(24);
+        let dateFormated = new Intl.DateTimeFormat('pt-BR').format(date); 
+      
         let cardHTML =
         `
             <div class="task" data-target ="${card.id}">
@@ -410,7 +405,7 @@ function generateCard() {
                     <div class="task__atributtes">
                         <p>
                         <i class="fa-solid fa-calendar-days"></i> 
-                        ${card.date}
+                        ${dateFormated}
                         </p>
                         <p>
                         <i class="fa-solid fa-chart-bar"></i>
@@ -428,7 +423,7 @@ function generateCard() {
         
     
         divForInsertCards.innerHTML += cardHTML;
-       
+     
         
        
     })
@@ -664,9 +659,19 @@ function filterCard({target}){
                 task.classList.remove('isHidden'); 
             })             
         break;
+
     }
 
 }
 
 
 
+function adjustmentColumn (){
+
+    let columns = document.querySelectorAll('.column__components');
+
+
+
+}
+
+adjustmentColumn();
