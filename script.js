@@ -23,7 +23,7 @@ let setLocalStorageCards = () => { localStorage.setItem('db_Cards', JSON.stringi
 (function loadContents(){
     generateColumn(); 
     generateCard();
-    insertTagCard()
+    insertTagCard();
     adjustmentColumn();
 })(); 
 
@@ -109,7 +109,6 @@ function resetColumnsHtml(){
        
     });
 
-   
 } 
 
 function delColumn (id, e){
@@ -153,7 +152,9 @@ function delColumn (id, e){
         setLocalStorage();
         sortIdx.forEach((index)=>{
             dataArrCards.splice(index, 1);
+            
             setLocalStorageCards();
+            
         })
 
         elementNode.remove();
@@ -180,7 +181,7 @@ function editColumn(id){
     
     formColumnId.value = indexColumn.id;
     formColumnEdit.value = indexColumn.titleColumn;
- 
+    
 }
 
 
@@ -205,6 +206,8 @@ function SaveEditModal(){
         generateColumn();
         setLocalStorage();
         generateCard();
+        setLocalStorageCards();
+        insertTagCard();
         closeModalEdit();
 }
 
@@ -564,7 +567,7 @@ function editTask(id, idColumn) {
     dateModalInput.value = card.date;
     progressStatus.value = card.progress;
     statusCard.value = card.status;
-
+   
 }
 
 
@@ -595,8 +598,10 @@ function saveEditModalCard(id, idColumn){
     })
 
     dataArrCards[index] = newCardEdited;
-    generateCard(); 
+
     setLocalStorageCards();
+    generateCard(); 
+   
     insertTagCard();
     closeTaskEditModal(); 
 }

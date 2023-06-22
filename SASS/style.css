@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(151, 144, 144);
+  background-color: #404040;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
