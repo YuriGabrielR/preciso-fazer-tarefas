@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Preciso Fazer | Tarefas  </title>
-    <meta name="description" content="Gerencie suas tarefas em nossa plataforma! O melhor to do list que você usará.">
+    <meta name="description" content="Organizador de Tarefas Grátis!! Gerencie suas tarefas em nossa plataforma! O melhor to do list que você usará.">
     <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./SASS/style.css">
    
@@ -34,7 +34,7 @@
             <div class="settings__inputColor">
     
                 <i class="fa-solid fa-fill-drip inputColor__icon"></i>
-                <input type="color" value="#586774" id="inputColor--setColor">
+                <input type="color" value="#5a5858" id="inputColor--setColor">
     
             </div>
     
@@ -47,7 +47,13 @@
                  <p> Plano de Fundo</p> 
     
                 </button>
-                   
+                <button class="btn--RemoveBg">
+    
+                    <i class="fa-regular fa-trash-can btn__iconImg "></i>
+       
+                    <p> Excluir Fundo</p> 
+       
+                   </button>
                 </div>
     
                 <div class="settings__filter">
@@ -80,13 +86,13 @@
                         <a class="menu__link" 
                         target="_blank"
                         href="https://github.com/YuriGabrielR/preciso-fazer-toDo"> 
-                        Github - Repositório </a>
+                        GitHub </a>
                     </li>
                 
                     <li class="menu__link">
-                        <a href="https://unsplash.com/documentation"
+                        <a href="https://pixabay.com/api/docs/"
                            target="_blank"> 
-                            API - Unsplash 
+                            Api Pixabay
                         </a>
                     </li>
     
@@ -94,7 +100,7 @@
     
                         <a  href="mailto:yurigabriel21@yahoo.com"
                             target="_blank"> 
-                            Feedbacks & Melhorias 
+                            Feedbacks
                         </a>
     
                     </li>
@@ -105,7 +111,7 @@
                          href="https://yurigabrielr.github.io/portfolio/"
                          target="_blank"> 
                         
-                         © by Yuri Ramos 
+                         © Yuri Ramos 
                         </a>
                     </span> 
                 </ul>
@@ -171,6 +177,7 @@
 
                 <span>
                     <input 
+                    autocomplete="off"
                     id="searchImages"
                     type="text" 
                     placeholder= " Procure por imagens! Exemplo: Montanhas, Paisagens...">   
@@ -197,6 +204,7 @@
                     <i class="fa-solid fa-angle-left previousPage"></i>
 
                     <input 
+                    autocomplete="off"
                     id="pageNumberInput"
                     value="1"
                     type="number"> <p id="hitsNumber"> / 100 </p>

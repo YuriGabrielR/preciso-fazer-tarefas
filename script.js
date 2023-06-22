@@ -39,13 +39,12 @@ function getInputColumn(e){
     }
 
     if(column.titleColumn){ 
-
-  
         dataColumns.push(column);
         setLocalStorage(); 
         generateColumn();
         generateCard();
-        insertTagCard()
+        insertTagCard();
+        adjustmentColumn ();
     }
     
      else {
@@ -59,7 +58,6 @@ function getInputColumn(e){
 function resetColumnsHtml(){
     document.querySelector('.column').innerHTML='';
 }
-
 
  function generateColumn (){
    resetColumnsHtml(); 
@@ -333,7 +331,8 @@ function createCards(idColumn) {
         setLocalStorageCards();
         generateColumn(); 
         generateCard();
-        insertTagCard ();
+        insertTagCard();
+        adjustmentColumn()
 
     } else {
 
@@ -453,6 +452,7 @@ function deleteTask(id, e){
         dataArrCards.splice(index, 1); 
         setLocalStorageCards();
         elementForRemove.remove();
+        adjustmentColumn();
     }
     
 }
@@ -596,7 +596,7 @@ function saveEditModalCard(id, idColumn){
     dataArrCards[index] = newCardEdited;
     generateCard(); 
     setLocalStorageCards();
-    insertTagCard ()
+    insertTagCard();
     closeTaskEditModal(); 
 }
 
@@ -641,7 +641,7 @@ function filterCard({target}){
         case "Concluídos":
             divsTaskPending.forEach(task =>{
                 task.offsetParent.classList.add('isHidden');
-
+                adjustmentColumn();
             })             
         break;
 
@@ -649,14 +649,16 @@ function filterCard({target}){
             divsTaskConcluded.forEach(task =>{
                
                 task.offsetParent.classList.add('isHidden');
-            
-
+                adjustmentColumn();
+                verifyImageStorage();
             })             
         break;
 
         case "Todos":
             divAllTasks.forEach(task =>{
                 task.classList.remove('isHidden'); 
+                adjustmentColumn();
+                verifyImageStorage();
             })             
         break;
 
@@ -669,9 +671,35 @@ function filterCard({target}){
 function adjustmentColumn (){
 
     let columns = document.querySelectorAll('.column__components');
+    
+    columns.forEach(column =>{
+        
+       let taskElement = column.children[2]; 
+       let tasks = taskElement.children;
+       let heightTotal = 0;
+       let arrTasks = Array.from(tasks); 
 
-
-
+        arrTasks.forEach(task =>{
+            heightTotal += task.clientHeight;
+        });
+       
+        if(tasks.length > 0){
+            column.style.height = `${heightTotal + 146}px`;
+        }else{
+           column.style.height = '120px'
+        }
+    })
+    
 }
 
-adjustmentColumn();
+function verifyImageStorage(){
+    let btnInsertImage = document.querySelector('.btn--setImageBackground');
+    let btnRemoveImage = document.querySelector('.btn--RemoveBg');
+
+    if(localStorage.getItem('imageThemeBg')){
+
+        btnInsertImage.classList.add('isHidden');
+        btnRemoveImage.classList.add('isActive')
+
+    }
+}

@@ -17,11 +17,14 @@ inputColorBg.addEventListener('input', (e) => {
     setThemeLocalStorage(colorStorage);
 });
 
-(function themeSelectLoad() {
+(function themeLoadFunctions() {
 
     setThemeLocalStorage();
+    insertImageBackground();
+    verifyImageLocalStorage();
 
 })();
+
 
 
 let openModalGalleryImages = document.querySelector('.btn--setImageBackground');
@@ -45,9 +48,6 @@ function inputKeypress({ key, target }) {
         galleryImages(inputSearchValue);
 
     }
-    // else{
-    //  messageErrorgalleryImages.classList.add('active')
-    // }
 }
 
 
@@ -75,7 +75,19 @@ async function getDataImages(searchText) {
     let keyUrl = await `https://pixabay.com/api/?key=35709897-b3e766a02865d6992119cbd7b&q=${searchText}`;
 
 
-    let reqDataImages = await fetch(keyUrl).then(response => response.json());
+    let reqDataImages = await fetch(keyUrl).then((response) => {
+       if(response.ok){
+
+        return response.json()
+
+       }else{
+        window.alert('Desculpe, ocorreu algum erro, por favor verifique sua conexão ou tente novamente!'); 
+        closeGallery();
+       }
+        
+    })
+    
+
 
     return reqDataImages;
 
@@ -173,8 +185,12 @@ function setImageBackground(url){
  
  insertImageBackground(urlImage);
 
- closeGallery();
+ document.querySelector('.btn--setImageBackground').classList.add('isHidden'); 
+ document.querySelector('.btn--RemoveBg').classList.add('isActive');
+ document.querySelector('#searchImages').value = '';
 
+ resetImagesHtml();
+ closeGallery();
 }
 
 let closeGalleryBtn = document.querySelector('.closeGallery');
@@ -194,12 +210,27 @@ function insertImageBackground(url){
 
 }
 
+document.querySelector('.btn--RemoveBg').addEventListener('click', ()=>{
+    localStorage.removeItem('imageThemeBg');
+    document.body.style.backgroundImage = '';
+
+    document.querySelector('.btn--setImageBackground').classList.remove('isHidden'); 
+    document.querySelector('.btn--RemoveBg').classList.remove('isActive');
+})
 
 
-(function loadImageBg(){
 
-    insertImageBackground();
-})()
+function verifyImageLocalStorage(){
+    let btnInsertImage = document.querySelector('.btn--setImageBackground');
+    let btnRemoveImage = document.querySelector('.btn--RemoveBg');
+
+    if(localStorage.getItem('imageThemeBg')){
+
+        btnInsertImage.classList.add('isHidden');
+        btnRemoveImage.classList.add('isActive')
+
+    }
+}
 
 
 
