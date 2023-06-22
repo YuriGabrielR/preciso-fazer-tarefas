@@ -24,6 +24,7 @@ let setLocalStorageCards = () => { localStorage.setItem('db_Cards', JSON.stringi
     generateColumn(); 
     generateCard();
     insertTagCard()
+    adjustmentColumn();
 })(); 
 
 formColumn.addEventListener('submit', getInputColumn);
